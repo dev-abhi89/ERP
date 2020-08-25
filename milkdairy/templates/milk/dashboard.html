@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>dashboard</title>
+    <style>
+        p{
+            font-family:'poppins',sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.7em;
+            color: rgb(216, 194, 194);
+        }
+        a, a:hover, a:focus{
+            color:#fafafa;
+            text-decoration: none;
+            transition: all 0.3s;
+
+        }
+        .wrapper{
+            display: flex;
+         
+            height: fit-content;
+
+        }
+        #sidebar{
+            max-width: 250px;
+            max-width: 250px;
+            color: #fff;
+            background-color: #7386D5;
+
+        }
+        #sidebar .active{
+            margin-left:-5px;
+        }
+        #sidebar .sidebar-header{
+            padding: 20px;
+            background: #6d7fcc;
+
+        }
+        #sidebar ul.components{
+            padding: 20px 0;
+            border-bottom:1px solid #47748B;
+
+        }
+        #sidebar ul p{
+            color:#fff;
+            padding: 10px;
+
+
+
+        }
+        #sidebar ul li a{
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+       }
+       #sidebar ul li a:hover{
+           color: #7386D5;
+           background: #fff;
+
+
+
+       }
+       #sidebar ul li.active>a,
+       a[aria-expanded="true"]{
+           color: #fff;
+           background: #6d7fcc;
+
+
+       }
+       a[data-toggle="collapse"]{
+           position: relative;
+       }
+       .dropdown-toggle::after{
+           display: block;
+           position: absolute;
+           top: 50%;
+           right: 20%;
+           transform: translateY(-50%);
+
+ 
+       }
+       ul ul a{
+           font-size: 0.9em !important ;
+           padding-left: 30px !important;
+           background: #6d7fcc;
+
+
+
+       }
+       .content{
+        min-height: 100vh;
+        padding: 20px;
+       
+         width: 100%; 
+         display: block;
+
+       }
+       #memberOption{
+           display: none;
+       }
+
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h1>Milk-dairy</h1>
+
+            </div>
+            <ul class="components">
+                <p>Wellcome to ERP</p>
+                <li class="active">
+                    <a href="#homesub" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse components" id ="homesub">
+                        <li><a href="#">home 1</a></li>
+                        <li><a href="#"> home 2</a</li>
+                    </ul>
+
+                </li>
+                <li><a href="#"> hubs</a></li>
+                <li><a href="#compo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Acounts
+                </a>
+                <ul class="collapse components" id ="compo">
+                    <li><a href="#">total candidate</a></li>
+                    <li><a href="#"> memberships</a></li>
+                </ul>
+            </li>
+            <li><a href="#"> contacts</a></li>
+            <li><a href="#"> abcd</a></li>
+            <li><a href="#another" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                ships
+            </a>
+            <ul class="collapse components" id="another">
+                <li><a href="#"> total</a></li>
+                <li><a href="#"> amount</a></li>
+            </ul>
+        </li>
+
+            </ul>
+        </nav>
+   
+
+    </nav>
+    <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info" aria-expanded="false" aria-controls="sidebar" data-toggle="collapse" data-target="#sidebar">
+                    <i class="fas fa-align-left"></i>
+                    <span>menu bar</span>
+                </button>
+            </div>
+        </nav>
+        <hr>
+        <div class="container mx-2">
+        <div class="form">
+            <form action="">
+                <div class="form-group  col-md-8">
+                    <label for="name">Fill Name</label>
+                    <input type="text" id ="name" class="form-control" name="name" placeholder="Enter Name" required>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="nember" > Mobile Number: </label>
+                    <input type="tel" id="number" class="form-control" name="number" required>
+                </div>
+                <div class="d-flex ml-auto  mr-auto  mt-3 form-row">
+                    <div class="col-md-4">
+                        <label for="amount"> Amount:</label>
+                        <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" required>
+
+                    </div>
+                    <div class="form-group  col-md-8">
+                    <label for="hubs">HUB: </label>
+                    <select class="custom-select" id="hubs" required>
+                        <option selected value="1">one</option>
+                        <option value="2">two</option>
+                        <option value="3">three</option>
+                        <option value="4">four</option>
+                        <option value="5">five</option>
+                    </select>
+
+                    </div>
+                    <div class="form-group col-md-12">
+                    <div class="custom-control custom-checkbox col-md-4">
+                        <input onchange="membership()" type="checkbox" class="custom-control-input" id="member">
+                        <label class="custom-control-label" for="member">Need membershp</label>
+                      </div>
+                    </div>
+                    <div class="form-row col-md-8 " id="memberOption">
+                    <div class="col-md-6 " id="membership">
+                        <label for="starting">Date of Start</label>
+                        <input type="date" class="form-control" id="starting" name="starting">
+
+                    </div>
+                    <div class="col-md-6" id="membership2">
+                        <label for="endinging">Date of End</label>
+                        <input type="date" class="form-control" id="ending" name="ending">
+                        
+                    </div>
+                </div>
+                <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-outline-primary">submit</button>
+                </div>
+                
+
+
+
+                   
+
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    function membership(){
+        if(document.getElementById('member').checked){
+            document.getElementById('memberOption').style.display="block";
+            document.getElementById('starting').setAttribute('required',true);
+            document.getElementById('ending').setAttribute('required',true);}
+        else
+        {
+            document.getElementById('memberOption').style.display="none";
+            document.getElementById('starting').removeAttribute('required');
+            document.getElementById('ending').removeAttribute('required');
+
+
+        }    
+    }
+// $(document).ready(function(){
+// $('#sidebarCollapse').on('click',function(){
+//     $("#sidebar").toggleClass('active');   });
+
+// });
+
+</script>
+    
+  </body>
+</html>

@@ -1,0 +1,309 @@
+{% extends 'milk/baseTemplate.html' %}
+
+{% block body %}
+
+
+<style>
+    .col-2{
+        max-width: 50px;
+        height: 50px;
+        background-color:red;
+        margin-left: 4px;
+        margin-top: 4px;
+        transition: all 0.3s;
+
+    }
+    .col-2:hover{
+        transform: translateY(2px);
+        box-shadow: 3px 4px 10px 5px grey;
+    }
+    .hide{
+        display: none;
+    }
+</style>
+<form method="POST" action="">
+    {% csrf_token %}
+
+<div class="container">
+    <div class="row">
+        {% for i in days %}
+        <div class="col-2"  value="{{i.id}}" name="{{i.id}}" id="div{{i.id}}"><p>{{i.date}}</p>
+        <div class="hde">
+            <input type="checkbox" name="days" id="{{i.id}}" value="{{i.id}}">
+        </div></div>
+
+       
+      {% endfor %}
+        <button class="btn btn-primary" type="submit"> testing</button>
+    </div>
+</div>
+</form>
+
+
+
+<br>
+<br><br>
+<br>
+<br>
+<br>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Number</th>
+        <th scope="col">Month</th>
+        <th scope="col">Days</th>
+        <th scope="col">State</th>
+        <th scope="col">City</th>
+        <th scope="col">action</th>
+
+        
+
+       
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in mem %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.order_id.name}}</td>
+        <td>{{i.order_id.num}}</td>
+        <td>{{i.starting}}</td>
+        <td>{% for m in i.day_set.all %} {{m.date}} {% endfor %}</td>
+        <td>Delhi</td>
+        <td>New Delhi</td>
+        <td><a href="#">details</a></td>
+      </tr>
+      {% endfor %}
+     
+     
+
+    </tbody>
+</table>
+
+<br>
+<br>
+<br>
+<h1>date = 3</h1>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">people</th>
+        <th scope="col">amount</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">hub</th>
+        <th scope="col">City</th>
+        <th scope="col">action</th>
+
+        
+
+       
+      </tr>
+    </thead>
+    <tbody>
+    
+      {% for i in ma.0.members_id.all %}
+      <tr>
+        <th scope="row">#</th>
+        
+
+        <td>{{i.order_id.name}}</td>
+        <td>{{i.order_id.amount}}</td>
+        <td>{{i.order_id.quantity}}</td>
+        <td>{{i.order_id.hub_id.hub_name}}</td>
+        <td>Delhi</td>
+        <td><a href="#">details</a></td>
+      </tr>
+      {% endfor %}
+    
+     
+     
+
+    </tbody>
+</table>
+
+<h1>month = 1</h1>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">people</th>
+        <th scope="col">amount</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">hub</th>
+        <th scope="col">Days</th>
+        <th scope="col">action</th>
+
+        
+
+       
+      </tr>
+    </thead>
+    <tbody>
+    
+      {% for i in na %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        
+
+        <td>{{i.order_id.name}}</td>
+        <td>{{i.order_id.amount}}</td>
+        <td>{{i.order_id.quantity}}</td>
+        <td>{{i.order_id.hub_id.hub_name}}</td>
+        <td>{% for m in i.day_set.all %}{{m.date}} {% endfor %}</td>
+        <td><a href="#">details</a></td>
+      </tr>
+      {% endfor %}
+    
+     
+     
+
+    </tbody>
+</table>
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">people</th>
+        <th scope="col">amount</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">hub</th>
+        <th scope="col">Days</th>
+        <th scope="col">month</th>
+        <th scope="col">days</th>
+        
+
+        
+
+       
+      </tr>
+    </thead>
+    <tbody>
+    
+      {% for i in na %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        
+
+        <td>{{i.order_id.name}}</td>
+        <td>{{i.order_id.amount}}</td>
+        <td>{{i.order_id.quantity}}</td>
+        <td>{{i.order_id.hub_id.hub_name}}</td>
+        <td>{% for m in i.day_set.all %}{{m.date}} {% endfor %}</td>
+        <td><a href="#">details</a></td>
+      </tr>
+      {% endfor %}
+
+
+
+
+
+
+
+    
+     
+     
+
+    </tbody>
+</table>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">people</th>
+        <th scope="col">Month</th>
+        <th scope="col">Days</th>
+      
+        
+
+        
+
+       
+      </tr>
+    </thead>
+    <tbody>
+    
+      {% for i in daysrel %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        
+
+        <td>{{i.user_id.order_id.name}}</td>
+        <td>{{i.month_id.months}}</td>
+        <td>{% for m in i.day_id.all %}
+            {{m.date}} {% endfor %}
+        </td>
+        
+      </tr>
+      {% endfor %}
+
+
+
+
+
+
+      
+    
+     
+     
+
+    </tbody>
+</table>
+
+<br>
+<br>
+<br>
+<h1>month =febuary</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">people</th>
+      <th scope="col">Month</th>
+      <th scope="col">Days</th>
+    
+      
+
+      
+
+     
+    </tr>
+  </thead>
+  <tbody>
+  
+    {% for i in feb %}
+    <tr>
+      <th scope="row">{{i.id}}</th>
+      
+
+      <td>{{i.user_id.order_id.name}}</td>
+      <td>{{i.month_id.months}}</td>
+      <td>{% for m in i.day_id.all %}
+          {{m.date}} {% endfor %}
+      </td>
+      
+    </tr>
+    {% endfor %}
+
+
+
+
+
+
+    
+  
+   
+   
+
+  </tbody>
+</table>
+
+
+{% endblock %}

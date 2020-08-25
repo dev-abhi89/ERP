@@ -1,0 +1,176 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>dashboard</title>
+    <style>
+        p{
+            font-family:'poppins',sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.7em;
+            color: rgb(216, 194, 194);
+        }
+        a, a:hover, a:focus{
+            color:#fafafa;
+            text-decoration: none;
+            transition: all 0.3s;
+
+        }
+        .wrapper{
+            display: flex;
+         
+            height: fit-content;
+
+        }
+        #sidebar{
+            max-width: 250px;
+            max-width: 250px;
+            color: #fff;
+            background-color: #7386D5;
+
+        }
+        #sidebar .active{
+            margin-left:-5px;
+        }
+        #sidebar .sidebar-header{
+            padding: 20px;
+            background: #6d7fcc;
+
+        }
+        #sidebar ul.components{
+            padding: 20px 0;
+            border-bottom:1px solid #47748B;
+
+        }
+        #sidebar ul p{
+            color:#fff;
+            padding: 10px;
+
+
+
+        }
+        #sidebar ul li a{
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+       }
+       #sidebar ul li a:hover{
+           color: #7386D5;
+           background: #fff;
+
+
+
+       }
+       #sidebar ul li.active>a,
+       a[aria-expanded="true"]{
+           color: #fff;
+           background: #6d7fcc;
+
+
+       }
+       a[data-toggle="collapse"]{
+           position: relative;
+       }
+       .dropdown-toggle::after{
+           display: block;
+           position: absolute;
+           top: 50%;
+           right: 20%;
+           transform: translateY(-50%);
+
+ 
+       }
+       ul ul a{
+           font-size: 0.9em !important ;
+           padding-left: 30px !important;
+           background: #6d7fcc;
+
+
+
+       }
+       .content{
+        min-height: 100vh;
+        padding: 20px;
+       
+         width: 100%; 
+         display: block;
+
+       }
+
+       {% block style %} {% endblock %}
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h1>Milk-dairy</h1>
+
+            </div>
+            <ul class="components">
+                <p>Wellcome to ERP</p>
+                <li class="active">
+                    <a href="/dashboard">Dashboard</a>
+                   
+
+                </li>
+                <li><a href="/dashboard/hublist"> HUBS</a></li>
+                <li><a href="#compo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Acounts
+                </a>
+                <ul class="collapse components" id ="compo">
+                    <li><a href="/dashboard/database">Total Orders</a></li>
+                    <li><a href="/dashboard/membership">Total memberships</a></li>
+                </ul>
+            </li>
+            <li><a href="/dashboard/membership"> Members</a></li>
+            <li><a href="/dashboard/analytic">Analysis </a></li>
+            <li><a href="#another" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                ships
+            </a>
+            <ul class="collapse components" id="another">
+                <li><a href="#"> total</a></li>
+                <li><a href="#"> amount</a></li>
+            </ul>
+        </li>
+
+            </ul>
+        </nav>
+   
+
+    </nav>
+    <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info" aria-expanded="false" aria-controls="sidebar" data-toggle="collapse" data-target="#sidebar">
+                    <i class="fas fa-align-left"></i>
+                    <span>menu bar</span>
+                </button>
+                <a href="logout">
+                    <button type="button" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>logout</span>
+                    </button>
+                    </a>
+            </div>
+        </nav>
+        <hr>
+
+        {% block body %}  {% endblock %}
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% block script %}  {% endblock %}
+</body>
+</html>

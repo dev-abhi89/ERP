@@ -1,0 +1,74 @@
+{% extends 'milk/baseTemplate.html'  %}
+
+{% block style %}
+
+
+
+
+    .colm:nth-child(1){
+        background:#fc4c72;
+    }
+    .colm:nth-child(2){
+        background: #659dbd;
+    }
+    .colm:nth-child(3){
+        background: #daad86;
+
+    }
+    .colm:nth-child(4){
+        background: #daad86;}
+    .colm{
+        height: 168px;
+    }
+    h3{
+        color: honeydew;
+        font-family: 'poppins','sans-sarif';
+    }
+    .colm p{font-size: 1.7em !important;
+    color: khaki !important ;}
+    .colm:hover{
+        box-shadow: 3px 4px 10px 2px grey;
+        transition: all 0.5s;
+    }
+    {% endblock %}
+        {% block body %}
+        <div class="cont">
+            <h1>TODAY</h1>
+            <div class="row justify-content-between ">
+                
+                <div class="col-md-3 mt-3 colm"> 
+                    <h3>Total Amount</h3>
+                    <p>{{tamount}}</p>
+                </div>
+                <div class="col-md-3 mt-3 colm">
+                    <h3>Total Users</h3>
+                    <p>{{torder}}</p>
+                </div>
+                <div class="col-md-3 mt-3 colm">
+                    <h3>Membership</h3>
+                    <p>{{tmember}}</p>
+                </div>
+            </div>
+            <hr>
+            <br>
+            <h1>Over all</h1>
+            <div class="row justify-content-between ">
+                
+                <div class="col-md-3 mt-3 colm"> 
+                    <h3>Total Amount</h3>
+                    <p>{{amount}}</p>
+                </div>
+                <div class="col-md-3 mt-3 colm">
+                    <h3>Total Users</h3>
+                    <p>{{orders}}</p>
+                </div>
+                <div class="col-md-3 mt-3 colm">
+                    <h3>Membership</h3>
+                    <p>{{member}}</p>
+                </div>
+            </div>
+           
+        </div>
+        </div>
+        
+        {% endblock %}

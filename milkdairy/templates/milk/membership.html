@@ -1,0 +1,70 @@
+{% extends 'milk/baseTemplate.html'  %}
+{% block body %}
+
+        <h1>Membership</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-start">
+          <a class="navbar-brand" href="/dashboard/membership">Membership</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+             
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li> -->
+            
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown ml-2" href="#" id="monthLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Months
+                </a>
+                <div class="dropdown-menu" aria-labelledby="monthLink">
+                    {% for i in months %}
+                  <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">{{i.months}}</a>
+                  {% endfor %}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Amount/day</th>
+                <th scope="col">Quantity/day</th>
+                
+
+                <th scope="col">Hub</th>
+
+               
+              </tr>
+            </thead>
+            <tbody>
+              
+              {% for i in mam %}
+              
+              <tr>
+                <th scope="row">{{i.id}}</th>
+                
+                <td>{{i.order_id.name}}</td>
+                <td>{{i.order_id.num}}</td>
+                <td>{{i.order_id.amount}}</td>
+                <td>{{i.order_id.quantity}}</td>
+               
+                
+            
+                
+                <td>{{i.order_id.hub_id.hub_name}}</td>
+
+              </tr>
+              {% endfor %}
+             
+             
+             
+            </tbody>
+        </table>
+      
+       {% endblock %}

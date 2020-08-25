@@ -1,0 +1,44 @@
+        {% extends 'milk/baseTemplate.html' %}
+        {% block style %} h4{margin:auto;}
+        {% endblock %}
+       
+       
+       {% block body %}
+        <h1>Database</h1>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Hubs</th>
+                <th scope="col"> Date</th>
+                
+
+               
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in data %}
+              <tr>
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.name}}</td>
+                <td>{{i.num}}</td>
+                <td>{{i.amount}}</td>
+                <td>{{i.quantity}}</td>
+               
+                <td>{{i.hub_id.hub_name}}</td>
+                <td>{{i.date}}</td>
+
+                
+                
+                
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        
+      {% endblock %}

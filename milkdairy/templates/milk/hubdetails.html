@@ -1,0 +1,78 @@
+
+    {% extends 'milk/baseTemplate.html' %}
+    {% block style %}
+    
+        .col-md-3 img{
+            max-width: 100px;
+            border: 1px solid black;
+            box-shadow: 4px 3px 8px 2px grey;
+        }
+        
+        {% endblock %}
+    
+        {% block body %}
+               
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                          <th scope="col">phone number</th>
+                          <th scope="col">123456789</th>
+                </tr>
+              <tr>
+                <th>Address:</th>
+                <th>collect. rustamji intitude of technology</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                <th>owner Name:</th>
+                <th>Abhishek Yadav</th>
+                <tr>
+                    <th>Watsapp Number:</th>
+                <th>1234567897</th>
+                </tr>
+            </tbody>
+            </table>
+            <div class="" id ="data"></div>
+            <button type=button data-toggle="collapse" data-target="#tabel" class="btn btn-dark mb-4" aria-expanded="false"
+            aria-controls="tabel">Distributors List</button>
+
+            <div class="collapse" id="tabel">
+            <table id="" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Distributer Name </th>
+                        <th scope="col"> Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Abhishek Yadav</td>
+                    <td>7509112289</td>
+                    </tr>
+                    <tr>
+                        <td>Abhishek Yadav</td>
+                        <td>7509112289</td>
+                        </tr>
+                        <tr>
+                            <td>Abhishek Yadav</td>
+                            <td>7509112289</td>
+                            </tr>
+                            <tr>
+                                <td>Abhishek Yadav</td>
+                                <td>7509112289</td>
+                                </tr>
+                                <tr>
+                                    <td>Abhishek Yadav</td>
+                                    <td>7509112289</td>
+                                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+            
+                
+            </div>
+            
+        
+       {% endblock %}
