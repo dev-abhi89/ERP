@@ -15,7 +15,7 @@ def dashboard(request):
             number = request.POST['number']
             amount = request.POST['amount']
             quantity = request.POST['quantity']
-            check = request.POST['check'] # trigger for membership
+            check = request.POST.get('check', 'off') # trigger for membership
             hubs = request.POST['hubs']
             hub = Hubs.objects.get(id=hubs)
             print([name, number, hubs, amount, quantity])#for testing
@@ -23,7 +23,7 @@ def dashboard(request):
             entry.save() # for data sumit in user's table
             if check == 'on': #if statement for membership
 
-                ncheck = request.POST.getlist('ncheck') # trigger for second month
+                ncheck = request.POST.get('ncheck', 'off') # trigger for second month
 
                 monthd = request.POST['months']
                 month_id=Month.objects.get(id=monthd)
@@ -46,7 +46,7 @@ def dashboard(request):
                     daee=Day.objects.get(id = day)
                     ab.day_id.add(daee)
 
-                if ncheck[0] == 'on': #if statement for next month feeding
+                if ncheck== 'on': #if statement for next month feeding
                     nmonth = request.POST['nxmonths']
                     ndays = request.POST.getlist('ndays')
                     nmonth_id = Month.objects.get(id=nmonth)
@@ -211,6 +211,10 @@ def filterDay(request, month,day):
      days = Day.objects.all()
      params = {'months':months, 'day':day, 'days':days,'filter':filter,'month':month}
      return render(request, 'milk/filterByDay.html', params)
+
+
+def delivery(request):
+    return render(request, 'milk/delivery.html')
 
 
 

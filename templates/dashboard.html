@@ -1,58 +1,63 @@
 {% extends 'milk/baseTemplate.html' %}
 {% block style %}
-       #memberOption{
-           display: none;
-       }
+#memberOption{
+display: none;
+}
 
-  {% endblock %}
+{% endblock %}
 
-  {% block body %}
-  <style>
-      .col-2{
-          max-width: 50px;
-          height: 50px;
-          background-color:red;
-          margin-left: 4px;
-          margin-top: 20px;
-          margin-bottom: 8px;
-          transition: all 0.3s;
+{% block body %}
+<style>
+    .col-2 {
+        max-width: 50px;
+        height: 50px;
+        background-color: red;
+        margin-left: 4px;
+        margin-top: 20px;
+        margin-bottom: 8px;
+        transition: all 0.3s;
 
-      }
-      .col-2:hover{
-          transform: translateY(2px);
-          box-shadow: 3px 4px 10px 5px grey;
-      }
-      .hide{
-          display: none;
-      }
-      .hd{
-          display: none;
-      }
-  </style>
- 
-        <div class="container mx-2">
-        <div class="form">
-            <form method="POSt" action="">
-                {% csrf_token %}
+    }
+
+    .col-2:hover {
+        transform: translateY(2px);
+        box-shadow: 3px 4px 10px 5px grey;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .hd {
+        display: none;
+    }
+</style>
+
+<div class="container mx-2">
+    <div class="form">
+        <form method="POSt" action="">
+            {% csrf_token %}
+            <div class="form-group  col-md-8">
+                <label for="name">Fill Name</label>
+                <input type="text" id="name" class="form-control" name="name" placeholder="Enter Name" required>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="number"> Mobile Number: </label>
+                <input type="tel" id="number" class="form-control" name="number" required>
+            </div>
+            <div class="d-flex ml-auto  mr-auto  mt-3 form-row">
+                <div class="col-md-4">
+                    <label for="amount"> Amount:</label>
+                    <input type="number" onchange="amnt()" class="form-control" name="amount" id="amount"
+                        placeholder="Enter amount" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" min="0" step="any" onchange="qunty()" class="form-control" name="quantity"
+                        id="quantity" placeholder="Enter quantity" required>
+
+                </div>
                 <div class="form-group  col-md-8">
-                    <label for="name">Fill Name</label>
-                    <input type="text" id ="name" class="form-control" name="name" placeholder="Enter Name" required>
-                </div>
-                <div class="form-group col-md-8">
-                    <label for="number" > Mobile Number: </label>
-                    <input type="tel" id="number" class="form-control" name="number" required>
-                </div>
-                <div class="d-flex ml-auto  mr-auto  mt-3 form-row">
-                    <div class="col-md-4">
-                        <label for="amount"> Amount:</label>
-                        <input type="number" onchange="amnt()" class="form-control" name="amount" id="amount" placeholder="Enter amount" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="quantity">Quantity</label>
-                        <input type="number" min="0" step="any" onchange="qunty()" class="form-control" name="quantity" id="quantity" placeholder="Enter quantity" required>
-
-                    </div>
-                    <div class="form-group  col-md-8">
                     <label for="hubs">HUB: </label>
                     <select class="custom-select" name="hubs" id="hubs" required>
                         {% for i in hubs %}
@@ -60,14 +65,15 @@
                         {% endfor %}
                     </select>
 
-                    </div>
-                    <div class="form-group col-md-12">
+                </div>
+                <div class="form-group col-md-12">
                     <div class="custom-control custom-checkbox col-md-4">
-                        <input onchange="membership()" type="checkbox" name="check" class="custom-control-input" id="member">
+                        <input onchange="membership()" type="checkbox" name="check" class="custom-control-input"
+                            id="member">
                         <label class="custom-control-label" for="member">Need membershp</label>
-                      </div>
                     </div>
-                    <div class="form-row col-md-8 " id="memberOption">
+                </div>
+                <div class="form-row col-md-8 " id="memberOption">
                     <div class="col-md-6 " id="membership">
                         <label for="starting">Date of Start</label>
                         <input type="date" class="form-control" id="starting" name="starting">
@@ -76,155 +82,160 @@
                     <div class="col-md-6" id="membership2">
                         <label for="endinging">Date of End</label>
                         <input type="date" class="form-control" id="ending" name="ending">
-                        
+
                     </div>
                     <div class="form-group  col-md-8">
                         <label for="hubs">Months </label>
-                        <select class="custom-select" name="months" id="months" >
+                        <select class="custom-select" name="months" id="months">
                             {% for i in months %}
                             <option value="{{i.id}}">{{i.months}}</option>
                             {% endfor %}
                         </select>
-    
-                        </div>
-                    
+
+                    </div>
+
                     <div class="container">
                         <div class="row">
                             {% for i in days %}
-                            <div class="col-2"  value="{{i.id}}" name="{{i.id}}" id="div{{i.id}}"><p>{{i.date}}</p>
-                            <div class="hde">
-                                <input type="checkbox" name="days" id="{{i.id}}" value="{{i.id}}">
-                            </div></div>
-                           
-                          {% endfor %}
-                     
+                            <div class="col-2" value="{{i.id}}" name="{{i.id}}" id="div{{i.id}}">
+                                <p>{{i.date}}</p>
+                                <div class="hde">
+                                    <input type="checkbox" name="days" id="{{i.id}}" value="{{i.id}}">
+                                </div>
+                            </div>
+
+                            {% endfor %}
+
                         </div>
                     </div>
 
                     <div class="custom-control custom-checkbox col-md-4">
                         <input onchange="mnt()" type="checkbox" name="ncheck" class="custom-control-input" id="nmember">
                         <label class="custom-control-label" for="nmember">next month</label>
-                      </div>
+                    </div>
                     <div class="container">
-                        
-                        
+
+
                         <div class="hd" id="nMntHid">
-                    <div class="form-group  col-md-8 mt-4">
-                        <label for="hubs">Months </label>
-                        <select class="custom-select" name="nxmonths" id="months" >
-                            {% for i in months %}
-                            <option value="{{i.id}}">{{i.months}}</option>
-                            {% endfor %}
-                        </select>
-    
+                            <div class="form-group  col-md-8 mt-4">
+                                <label for="hubs">Months </label>
+                                <select class="custom-select" name="nxmonths" id="months">
+                                    {% for i in months %}
+                                    <option value="{{i.id}}">{{i.months}}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+
+                            <div class="container">
+                                <div class="row">
+                                    {% for i in days %}
+                                    <div class="col-2" value="{{i.id}}" name="{{i.id}}" id="div{{i.id}}">
+                                        <p>{{i.date}}</p>
+                                        <div class="hde">
+                                            <input type="checkbox" name="ndays" id="{{i.id}}" value="{{i.id}}">
+                                        </div>
+                                    </div>
+
+                                    {% endfor %}
+
+                                </div>
+
+
+                            </div>
+
                         </div>
 
-                        <div class="container">
-                            <div class="row">
-                                {% for i in days %}
-                                <div class="col-2"  value="{{i.id}}" name="{{i.id}}" id="div{{i.id}}"><p>{{i.date}}</p>
-                                <div class="hde">
-                                    <input type="checkbox" name="ndays" id="{{i.id}}" value="{{i.id}}">
-                                </div></div>
-                               
-                              {% endfor %}
-                         
-                            </div>
 
 
                     </div>
-
-                    </div>    
                     
-                    
-
-                </div>
-              
-                <div class="col-12 mt-4">
-                    <button type="submit" class="btn btn-outline-primary">submit</button>
-                </div>
                 
-
-
-
                    
 
+
+
+
+
+
                 </div>
-            </form>
-        </div>
+                <div class="col-12 mt-4" style="display: block;">
+                    <button type="submit" class="btn btn-outline-primary">submit</button>
+                </div>
+        </form>
     </div>
-    </div>
-    {% endblock %}
+</div>
+</div>
+{% endblock %}
 {% block script %}
 <script>
-    function membership(){
-        if(document.getElementById('member').checked){
-            document.getElementById('memberOption').style.display="block";
-            document.getElementById('starting').setAttribute('required',true);
-            document.getElementById('ending').setAttribute('required',true);}
-        else
-        {
-            document.getElementById('memberOption').style.display="none";
+    function membership() {
+        if (document.getElementById('member').checked) {
+            document.getElementById('memberOption').style.display = "block";
+            document.getElementById('starting').setAttribute('required', true);
+            document.getElementById('ending').setAttribute('required', true);
+        }
+        else {
+            document.getElementById('memberOption').style.display = "none";
             document.getElementById('starting').removeAttribute('required');
             document.getElementById('ending').removeAttribute('required');
 
 
-        }    
+        }
     }
 
-    function mnt(){
-        if(document.getElementById('nmember').checked){
-            document.getElementById('nMntHid').style.display="block";}
-            
-        else
-        {
-            document.getElementById('nMntHid').style.display="none";
-           
+    function mnt() {
+        if (document.getElementById('nmember').checked) {
+            document.getElementById('nMntHid').style.display = "block";
+        }
 
-        }    
+        else {
+            document.getElementById('nMntHid').style.display = "none";
+
+
+        }
     }
-// $(document).ready(function(){
-// $('#sidebarCollapse').on('click',function(){
-//     $("#sidebar").toggleClass('active');   });
+    // $(document).ready(function(){
+    // $('#sidebarCollapse').on('click',function(){
+    //     $("#sidebar").toggleClass('active');   });
 
-// });
-function amnt(){
-    x = document.getElementById('amount').value;
-    document.getElementById('quantity').value = x/40;
-}
-function qunty(){
-  
-  x =  document.getElementById('quantity').value
-    document.getElementById('amount').value=x*40
-
-
-}
-
-function check(){
-    // x =document.getElementById(this);
-    // console.log(x.style)
-    // xy=x.querySelectorAll(".hide");
-    //document.getElementById(x).click();
-    //$(document).ready(function(){
-    //$(this).find("input").click();
-//});
-   
-    if(document.getElementById(x).checked){
-        document.getElementById(this).style.backgroundColor='green';
-        
-
+    // });
+    function amnt() {
+        x = document.getElementById('amount').value;
+        document.getElementById('quantity').value = x / 40;
     }
-    else{
-        pass
-        //document.getElementById('colr').style.backgroundColor='red';
-      
+    function qunty() {
+
+        x = document.getElementById('quantity').value
+        document.getElementById('amount').value = x * 40
+
 
     }
 
+    function check() {
+        // x =document.getElementById(this);
+        // console.log(x.style)
+        // xy=x.querySelectorAll(".hide");
+        //document.getElementById(x).click();
+        //$(document).ready(function(){
+        //$(this).find("input").click();
+        //});
 
-}
-console.log(document.getElementById('chck').value);
+        if (document.getElementById(x).checked) {
+            document.getElementById(this).style.backgroundColor = 'green';
+
+
+        }
+        else {
+            pass
+            //document.getElementById('colr').style.backgroundColor='red';
+
+
+        }
+
+
+    }
+    console.log(document.getElementById('chck').value);
 </script>
 
 {% endblock %}
-

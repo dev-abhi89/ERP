@@ -1,0 +1,65 @@
+{% extends 'delivery/deliverybaseTemplate.html' %}
+
+{% block body %}
+
+<div class="row">
+             
+    <div class="col-md-8">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">0</th>
+              <th scope = "col"> Name</th>
+              <td>Abhishek YAdav</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="col">1</th>
+              <th>Number</th>
+              <td>1234567890</td>
+              
+            </tr>
+            <tr>
+              <th scope="col">2</th>
+              <th>Amount</th>
+              <td>100</td>
+              
+            </tr>
+            <tr>
+              <th scope="col">3</th>
+              <th>Quantity</th>
+              <td>2.5</td>
+              
+            </tr>
+            <tr>
+              <th scope="col">3</th>
+              <th>status</th>
+              <td><form action="get"> <select class="custom-select" id="status" required>
+                <option value="1">Delivered</option>
+
+                <option value="2">Undeliverd</option>
+                <option value="2">Out fo delivery</option>
+                
+            </select> <button class="btn btn-sm mt-2 btn-outline-success" type="submit"> update</button> </form> </td>
+              
+            </tr>
+            <tr>
+              <th scope="col">3</th>
+              <th>Payment</th>
+              <td><form action="get"> <select class="custom-select" id="status" required>
+                <option value="1">unpaid</option>
+
+                <option value="2">Paid</option>
+                
+                
+            </select> <button class="btn btn-sm mt-2 btn-outline-success" type="submit"> update</button> </form> </td>
+              
+            </tr>
+          </tbody>
+        </table>
+
+
+    </div>
+
+{% endblock %}

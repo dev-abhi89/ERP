@@ -39,7 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'milkdairy.apps.MilkdairyConfig',
     'month.apps.MonthConfig',
+    "crispy_forms",
+    'delivery.apps.DeliveryConfig',
+    'hub.apps.HubConfig',
+    'client.apps.ClientConfig',
 ]
+CRISPY_TEMPLATE_PACK="bootstrap4"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -22,4 +22,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('login', views.login, name='login'),
     path('dashboard/', include('milkdairy.urls')),
+    path('delivery/', include('delivery.urls')),
+    path('hub/', include('hub.urls')),
+    path('user/', include('client.urls')),
+
 ]

@@ -29,5 +29,6 @@ urlpatterns = [
     path('test', views.test, name='lol'),
     path('membership/<int:month>',views.filterMonth, name="filterByMonth"),
     path('membership/<int:month>/<int:day>', views.filterDay, name = 'filterByDay'),
+    path('delivery', views.delivery, name = 'delivery')
 
 ]

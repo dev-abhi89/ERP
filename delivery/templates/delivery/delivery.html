@@ -1,0 +1,90 @@
+{% extends 'delivery/deliverybasetemplate.html' %}
+
+{% block body %}
+
+      <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div>
+      
+      <div class="container mt-5">
+          <div class="row">
+              <div class="col-md-8">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                      
+                        <th scope="col">Status</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><a href="">Abhishek YAdab</a></td>
+                        <td>Behind Main Post Office Tilamharh , madhya pradesh</td>
+                       
+                        <td><a href=""> <button class="btn btn-sm btn-outline-success">Update</button></a></td>
+
+                      </tr> 
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><a href="">Abhishek YAdab</a></td>
+                        <td>Behind Main Post Office Tilamharh , madhya pradesh</td>
+                        
+                        <td> <button class="btn btn-sm btn-outline-success" type="button" data-toggle="modal" data-target="#update">Update</button> <a href=""> <button class="btn btn-sm mt-2 btn-outline-success">View</button></a></td>
+
+                      </tr> 
+                     
+                    </tbody>
+                  </table>
+
+
+              </div>
+              <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <form action="get"> <select class="custom-select" id="status" required>
+                      <option value="1">Delivered</option>
+
+                <option value="2">Undeliverd</option>
+                <option value="2">Out fo delivery</option>
+                      
+                  </select> 
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+      <div class="container">
+        <div class="row justify-content-between ">
+                
+            <div class="col-md-3 mt-3 colm"> 
+                <h3>Total Amount</h3>
+                <p>{{tamount}}</p>
+            </div>
+            <div class="col-md-3 mt-3 colm">
+                <h3>Total Users</h3>
+                <p>{{torder}}</p>
+            </div>
+            <div class="col-md-3 mt-3 colm">
+                <h3>Membership</h3>
+                <p>{{tmember}}</p>
+            </div>
+        </div>
+      </div>
+
+              
+
+
+              </div>
+          </div>
+     
+
+          {% endblock %}

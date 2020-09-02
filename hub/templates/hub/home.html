@@ -1,0 +1,102 @@
+{% extends 'hub/baseTemplate.html' %}
+
+{% block style %}
+  
+
+    <style>
+         .colm:nth-child(1){
+        background:#fc4c72;
+    }
+    .colm:nth-child(2){
+        background: #659dbd;
+    }
+    .colm:nth-child(3){
+        background: #daad86;
+
+    }
+    .colm:nth-child(4){
+        background: #daad86;}
+    .colm{
+        height: 168px;
+    }
+    h3{
+        color: honeydew;
+        font-family: 'poppins','sans-sarif';
+    }
+    .colm p{font-size: 1.7em !important;
+    color: khaki !important ;}
+    .colm:hover{
+        box-shadow: 3px 4px 10px 2px grey;
+        transition: all 0.5s;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+
+
+<div class="container">
+    <div class="row justify-content-between ">
+            
+        <div class="col-md-3 mt-3 colm"> 
+            <h3>Undelivery</h3>
+            <p>{{tamount}}</p>
+        </div>
+        <div class="col-md-3 mt-3 colm">
+            <h3>Delivered</h3>
+            <p>{{torder}}</p>
+        </div>
+        <div class="col-md-3 mt-3 colm">
+            <h3>unconfirmed</h3>
+            <p>{{tmember}}</p>
+        </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Orders</h2></div>
+  
+  <div class="container mt-5">
+      <div class="row">
+          <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Delivery boy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+      {% for i in filter %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        
+        <td>{{i.user_id.order_id.name}}</td>
+        <td>{{i.user_id.order_id.num}}</td>
+        <td>{{i.user_id.order_id.amount}}</td>
+        <td>{{i.user_id.order_id.quantity}}</td>
+       
+        
+        
+        
+        <td>{{i.user_id.order_id.hub_id.hub_name}}</td>
+
+      </tr>
+      {% endfor %}
+                </tbody>
+              </table>
+
+
+          </div>
+
+          <div class="col-md-3">
+              <img src="/milkdairy/static/milk/2.png" style="max-height: 20vh; max-width: 50vh;" alt="" class="reponsive-img">
+
+
+          </div>
+      </div>
+      </div>
+
+{% endblock %}

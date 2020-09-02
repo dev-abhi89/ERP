@@ -1,0 +1,84 @@
+
+
+{% extends 'client/basetemplate.html' %}
+{% load static %}
+{% block body %}        
+      <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div>
+      
+      <div class="container mt-5">
+          <div class="row">
+              <div class="col-md-12 d-grid cover">
+                  
+                  <img class="img-thumbnail mt-2" src="{% static 'client/2.png' %}" style = "max-width: 35vh; max-height: 35vh;"alt="">
+                    <h3 class="text-white">Abhishek Yadav</h3>
+              </div>
+              
+          </div>
+          <div class="row">
+             
+              <div class="col-md-8">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">0</th>
+                        <th scope = "col"> Name</th>
+                        <td>Abhishek YAdav</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="col">1</th>
+                        <th>Number</th>
+                        <td>1234567890</td>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="col">2</th>
+                        <th>Amount</th>
+                        <td>100</td>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="col">3</th>
+                        <th>Quantity</th>
+                        <td>2.5</td>
+                        
+                      </tr>
+                      <tr>
+                        <th scope="col">3</th>
+                        <th>status</th>
+                        <td>Out for delivery </td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+              </div>
+
+            
+            </div>
+            
+          
+      </div>
+      <div class="container">
+        <div class="row justify-content-between ">
+                
+            <div class="col-md-3 mt-3 colm"> 
+                <h3>Total Amount</h3>
+                <p>{{tamount}}</p>
+            </div>
+            <div class="col-md-3 mt-3 colm">
+                <h3>Total Users</h3>
+                <p>{{torder}}</p>
+            </div>
+            <div class="col-md-3 mt-3 colm">
+                <h3>Membership</h3>
+                <p>{{tmember}}</p>
+            </div>
+        </div>
+      </div>
+
+      {% endblock %}
+     
+       

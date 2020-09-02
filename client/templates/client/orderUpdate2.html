@@ -1,0 +1,43 @@
+{% extends 'client/baseTemplate.html' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center mt-3 bg-danger"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Update Your order</h2></div>
+<div class="form mt-3">
+    <form action="">
+        <div class="form-group  col-md-8">
+            <label for="name">month </label>
+            <input type="text" id ="name" class="form-control" name="month" value="january" placeholder="Enter Name">
+        </div>
+      <div class="form-group  col-md-8">
+            <label for="numbwe">day </label>
+            <input type="tell" id ="number" class="form-control" name="day" value="00" placeholder="Enter Number">
+        </div>  
+      <div class="form-group  col-md-8">
+            <label for="wnumber"> Amount </label>
+            <input type="number" onchange="amnt()" id ="amount" class="form-control" name="amount" value="00000000" placeholder="Enter Number">
+        </div>  
+      <div class="form-group  col-md-8">
+            <label for="Address"> Quantity </label>
+            <input type="number" id ="quantity" onchange="qunty()" class="form-control" name="quantity" value="" placeholder="Enter Number">
+        </div> 
+        <button class="btn btn-danger ml-3" type="submit">Submit</button>
+        </form> 
+
+</div>
+
+{% endblock %}
+
+{% block script %}  <script>  function amnt() {
+    x = document.getElementById('amount').value;
+    document.getElementById('quantity').value = x / 40;
+}
+function qunty() {
+
+    x = document.getElementById('quantity').value
+    document.getElementById('amount').value = x * 40
+
+
+}
+</script>
+{% endblock %}

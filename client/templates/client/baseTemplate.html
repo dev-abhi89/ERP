@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% load static %}
+    <title>dashboard</title>
+    {% block style %} {% endblock %}
+    <style>
+        p{
+            font-family:'poppins',sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.7em;
+            color: rgb(216, 194, 194);
+        }
+        a, a:hover, a:focus{
+            color:#fafafa;
+            text-decoration: none;
+            transition: all 0.3s;
+
+        }
+        .wrapper{
+            display: flex;
+         
+            height: fit-content;
+
+        }
+        #sidebar{
+            max-width: 250px;
+            max-width: 250px;
+            color: #fff;
+            background-color: #7386D5;
+
+        }
+        #sidebar .active{
+            margin-left:-5px;
+        }
+        #sidebar .sidebar-header{
+            padding: 20px;
+            background: #6d7fcc;
+
+        }
+        #sidebar ul.components{
+            padding: 20px 0;
+            border-bottom:1px solid #47748B;
+
+        }
+        #sidebar ul p{
+            color:#fff;
+            padding: 10px;
+
+
+
+        }
+        #sidebar ul li a{
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+       }
+       #sidebar ul li a:hover{
+           color: #7386D5;
+           background: #fff;
+
+
+
+       }
+       #sidebar ul li.active>a,
+       a[aria-expanded="true"]{
+           color: #fff;
+           background: #6d7fcc;
+
+
+       }
+       a[data-toggle="collapse"]{
+           position: relative;
+       }
+       .dropdown-toggle::after{
+           display: block;
+           position: absolute;
+           top: 50%;
+           right: 20%;
+           transform: translateY(-50%);
+
+ 
+       }
+       ul ul a{
+           font-size: 0.9em !important ;
+           padding-left: 30px !important;
+           background: #6d7fcc;
+
+
+
+       }
+       .content{
+        min-height: 100vh;
+        padding: 20px;
+       
+         width: 100%; 
+         display: block;
+
+       }
+
+     
+    </style>
+     <style>
+        .colm:nth-child(1){
+       background:#fc4c72;
+   }
+   .colm:nth-child(2){
+       background: #659dbd;
+   }
+   .colm:nth-child(3){
+       background: #daad86;
+
+   }
+   .colm:nth-child(4){
+       background: #daad86;}
+   .colm{
+       height: 168px;
+   }
+   h3{
+       color: honeydew;
+       font-family: 'poppins','sans-sarif';
+   }
+   .colm p{font-size: 1.7em !important;
+   color: khaki !important ;}
+   .colm:hover{
+       box-shadow: 3px 4px 10px 2px grey;
+       transition: all 0.5s;
+   }
+   .cover{
+       box-shadow: -1px 1px 10px 3px grey;
+       background-image: url("{% static 'client/2.jpg' %}");
+       background-size: cover;
+   }
+   @media screen and (max-width: 400px) {
+       .col-md-12 img{
+           height:120px ;
+
+       }
+       
+   }
+   .dropdown{
+       transition: all 1s;
+   }
+   </style>
+      
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+        <a class="navbar-brand" href="/dashboard/membership">Wellcome Abhishek</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+           
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li> -->
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown ml-2" href="#" id="monthLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Orders<strong>({{month}})</strong>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="monthLink">
+                  
+                <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">Track Order</a>
+                <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">Place Order</a>
+                <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">View View</a>
+                
+              </div>
+            </li>
+    
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown ml-2" href="#" id="dayLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Profile
+                </a>
+                <div class="dropdown-menu" aria-labelledby="monthLink">
+                  
+                  <a class="dropdown-item" href="/dashboard/membership/{{month}}/{{i.id}}">View Profile</a>
+                  <a class="dropdown-item" href="/dashboard/membership/{{month}}/{{i.id}}">Update Profile</a>
+                  <a class="dropdown-item" href="/dashboard/membership/{{month}}/{{i.id}}">Change Password </a>
+                
+                </div>
+              </li>
+              
+
+    
+            
+          </ul>
+          <ul class="navbar-nav ml-auto ">
+            <li class="nav-item">
+                <a class ="nav-link " href=""><button class="btn btn-outline-warning btn-sm"> Logout</button></a>
+            </li>
+           <li class="nav-item"> <span class="nav-link">Wellcome Abhishek</span></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="wrapper">
+        <nav id="sidebar" class="collapse">
+            <div class="sidebar-header">
+                <h1>Milk-dairy</h1>
+
+            </div>
+            <ul class="components">
+                <p>Drink Well</p>
+                <li class="active">
+                    <a href="/dashboard">Dashboard</a>
+                   
+
+                </li>
+                <li><a href="">Place Order</a></li>
+                <li><a href="#compo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Accounts
+                </a>
+                <ul class="collapse components" id ="compo">
+                    <li><a href="/dashboard/database">Your Orders</a></li>
+                    <li><a href="/dashboard/membership">Update Orders</a></li>
+                    <li><a href="/dashboard/membership">Update Password</a></li>
+                    <li><a href="/dashboard/membership">for future options</a></li>
+                                    
+
+
+                </ul>
+            </li>
+            <li><a href="/dashboard/membership">Profile </a></li>
+            <li><a href="/dashboard/analytic">Track Your Order </a></li>
+            <li><a href="#another" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                Delivery 
+            </a>
+            <ul class="collapse components" id="another">
+                <li><a href="#"> Delivery Boys</a></li>
+
+                <li><a href="#"> Create Delivery Boy</a></li>
+            </ul>
+        </li>
+
+            </ul>
+        </nav>
+   
+
+    </nav>
+    <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info" aria-expanded="false" aria-controls="sidebar" data-toggle="collapse" data-target="#sidebar">
+                    <i class="fas fa-align-left"></i>
+                    <span>menu bar</span>
+                </button>
+                <a href="logout">
+                    <button type="button" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>logout</span>
+                    </button>
+                    </a>
+            </div>
+        </nav>
+        <hr>
+{% block body %}  {% endblock %}
+
+
+</div>
+
+        
+       
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% block script %}  {% endblock %}
+</body>
+</html>
