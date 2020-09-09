@@ -123,16 +123,17 @@
                    
 
                 </li>
-                <li><a href="/dashboard/hublist"> HUBS</a></li>
+                <li><a href="/dashboard/database"> User Database</a></li>
+                <li><a href="/dashboard/newuser">Create User</a></li>
                 <li><a href="#compo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    Acounts
+                    Hubs
                 </a>
                 <ul class="collapse components" id ="compo">
-                    <li><a href="/dashboard/database">Total Orders</a></li>
-                    <li><a href="/dashboard/membership">Total memberships</a></li>
+                    <li><a href="/dashboard/newhub">Create Hub</a></li>
+                    <li><a href="/dashboard/hublist">View Hub</a></li>
                 </ul>
             </li>
-            <li><a href="/dashboard/membership"> Members</a></li>
+            <li><a href="/dashboard/orders"> Orders</a></li>
             <li><a href="/dashboard/analytic">Analysis </a></li>
             <li><a href="#another" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 ships
@@ -155,6 +156,10 @@
                     <i class="fas fa-align-left"></i>
                     <span>menu bar</span>
                 </button>
+                <form  class="form-inline" action="{% url 'search' %}" method="GET">
+                    <input class="form-control" name="search" type="search" placeholder="Search by number" aria-label="Search">
+                    <button class="btn btn-outline-success ml-4 my-sm-0" type="submit">Search</button>
+                </form>
                 <a href="logout">
                     <button type="button" class="btn btn-info">
                         <i class="fas fa-align-left"></i>

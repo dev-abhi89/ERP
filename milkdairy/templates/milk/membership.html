@@ -1,9 +1,9 @@
 {% extends 'milk/baseTemplate.html'  %}
 {% block body %}
 
-        <h1>Membership</h1>
+      
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-start">
-          <a class="navbar-brand" href="/dashboard/membership">Membership</a>
+          <a class="navbar-brand" href="/dashboard/orders">Today-s order</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -20,24 +20,29 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="monthLink">
                     {% for i in months %}
-                  <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">{{i.months}}</a>
+                  <a class="dropdown-item" href="/dashboard/orders/{{i.id}}">{{i.months}}</a>
                   {% endfor %}
                 </div>
               </li>
             </ul>
           </div>
         </nav>
-        <table class="table table-striped">
+        <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Today's Orders</h2></div>
+
+        <table class="table table-striped mt-3">
             <thead>
               <tr>
-                <th scope="col">#</th>
+               
                 <th scope="col">Name</th>
                 <th scope="col">Number</th>
-                <th scope="col">Amount/day</th>
-                <th scope="col">Quantity/day</th>
-                
+                <th scope="col">Amount /Quantity L</th>
+                <th scope="col">Address</th>
+                <th scope="col">Date</th>
+
 
                 <th scope="col">Hub</th>
+                <th scope="col">Status</th>
+                <th scope="col">payment</th>
 
                
               </tr>
@@ -47,17 +52,20 @@
               {% for i in mam %}
               
               <tr>
-                <th scope="row">{{i.id}}</th>
+          
                 
-                <td>{{i.order_id.name}}</td>
-                <td>{{i.order_id.num}}</td>
-                <td>{{i.order_id.amount}}</td>
-                <td>{{i.order_id.quantity}}</td>
+                <td>{{i.user.name}}</td>
+                <td>{{i.user.number}}</td>
+                <td>{{i.amount}} / {{i.quantity}}</td>
+                <td>{{i.user.address}}</td>
+                <td>{{i.month.months}} {{i.day.date}}</td>
                
                 
             
                 
-                <td>{{i.order_id.hub_id.hub_name}}</td>
+                <td>{{i.user.hub.hub_name}}</td>
+                <td>{{i.status}}</td>
+                <td>{{i.payment}}</td>
 
               </tr>
               {% endfor %}

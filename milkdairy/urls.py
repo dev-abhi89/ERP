@@ -23,12 +23,14 @@ urlpatterns = [
     path('logout/',views.logout, name='logout'),
     path('database', views.databse, name='database'),
     path('analytic', views.analytic, name='analytics'),
-    path('hubdetail', views.hubdetails, name='hubDetails'),
+    path('hubdetail/<int:id>', views.hubdetails, name='hubDetails'),
     path('hublist', views.hublist, name='hubList'),
-    path('membership', views.membership, name='memberShip'),
-    path('test', views.test, name='lol'),
-    path('membership/<int:month>',views.filterMonth, name="filterByMonth"),
-    path('membership/<int:month>/<int:day>', views.filterDay, name = 'filterByDay'),
-    path('delivery', views.delivery, name = 'delivery')
+    path('orders', views.membership, name='memberShip'),
+    path('orders/<int:month>',views.filterMonth, name="filterByMonth"),
+    path('orders/<int:month>/<int:day>', views.filterDay, name = 'filterByDay'),
+    path('newuser', views.newuser, name = 'newuser'),
+    path('newhub', views.hubregister, name = 'newhub'),
+    path(r'^search/$', views.search, name='search'),
+    path('user/<int:id>/', views.userdetail, name='userDetail'),
 
 ]

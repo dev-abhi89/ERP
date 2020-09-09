@@ -10,7 +10,7 @@
               <div class="col-md-12 d-grid cover">
                   
                   <img class="img-thumbnail mt-2" src="{% static 'client/2.png' %}" style = "max-width: 35vh; max-height: 35vh;"alt="">
-                    <h3 class="text-white">Abhishek Yadav</h3>
+                    <h3 class="text-white">{{user.name}}</h3>
               </div>
               
           </div>
@@ -18,36 +18,30 @@
              
               <div class="col-md-8">
                 <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">0</th>
-                        <th scope = "col"> Name</th>
-                        <td>Abhishek YAdav</td>
-                      </tr>
-                    </thead>
+                    
                     <tbody>
                       <tr>
                         <th scope="col">1</th>
                         <th>Number</th>
-                        <td>1234567890</td>
+                        <td>{{user.number}}</td>
                         
                       </tr>
                       <tr>
                         <th scope="col">2</th>
-                        <th>Amount</th>
-                        <td>100</td>
+                        <th>Address</th>
+                        <td>{{user.address}}</td>
                         
                       </tr>
                       <tr>
                         <th scope="col">3</th>
-                        <th>Quantity</th>
-                        <td>2.5</td>
+                        <th>whatsaap Number</th>
+                        <td>{{user.whatsaap_number}}</td>
                         
                       </tr>
                       <tr>
                         <th scope="col">3</th>
-                        <th>status</th>
-                        <td>Out for delivery </td>
+                        <th> Full profile</th>
+                        <td><a href=""><button class="btn btn-primary btn-outline-primary">Click Here</button></a> </td>
                         
                       </tr>
                     </tbody>
@@ -78,6 +72,38 @@
             </div>
         </div>
       </div>
+
+
+      <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div>
+      
+      <div class="container mt-5">
+          <div class="row">
+              <div class="col-md-8">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        
+                        <th scope="col">Amount</th>
+                        <th scope="col">Quantity</th>
+                      
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in order %}
+                      <tr>
+                        <td>{{i.amount}}</td>
+                        <td>{{i.quantity}}</td>
+                        <td>{{i.status}}</td>
+
+                       
+                        <td><a href=""><button class="btn btn-sm btn-outline-success" type="button" >Update</button> </a> <a href="/delivery/orderdetails/{{i.id}}/"> <button class="btn btn-sm mt-2 btn-outline-success">View</button></a></td>
+                      </tr> 
+                      {% endfor %}
+                      </tbody>
+                      </table>
 
       {% endblock %}
      

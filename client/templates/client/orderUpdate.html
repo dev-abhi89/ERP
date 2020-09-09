@@ -13,57 +13,28 @@
         
         <th scope="col">date</th>
         
-        <th scope="col">Amount</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Action </th>
-        
-        
-
+        <th scope="col">A/Q</th>
        
+        <th scope="col">Action </th>
       </tr>
     </thead>
     <tbody>
-     
+     {% for i in orders %}
       <tr>
         
        
       
-        <td>March</td>
-        <td>100</td>
+        <td>{{i.month.months}} {{i.day.date}}</td>
+        <td>{{i.amount}} ₹ /{{i.quantity}}L</td>
        
-        <td>Out for delivery</td>
-        <td><a><button class="btn btn-sm btn-outline-warning">update</button></a> <a><button class="btn mt-2 btn-sm btn-outline-danger">Delete</button></a></td>
+       
+        <td><a href="/user/orderupdate/{{i.id}}"><button class="btn btn-sm btn-outline-warning">update</button></a> <a><button class="btn mt-2 btn-sm btn-outline-danger">Delete</button></a></td>
 
         
         
         
       </tr>
-      <tr>
-        
-       
-      
-        <td>March</td>
-        <td>100</td>
-       
-        <td>Out for delivery</td>
-        <td><a><button class="btn btn-sm btn-outline-warning">update</button></a> <a><button class="btn mt-2 btn-sm btn-outline-danger">Delete</button></a></td>
-
-        
-        
-        
-      </tr>
-      <tr>
-        
-       
-      
-        <td>March</td>
-        <td>100</td>
-       
-        <td>Out for delivery</td>
-        <td><a><button class="btn btn-sm btn-outline-warning">update</button></a> <a><button class="btn mt-2 btn-sm btn-outline-danger">Delete</button></a></td>
-
-        
-        
-        
-      </tr>
+      {% endfor %}
+     </tbody>
+     </table>
 {% endblock %}

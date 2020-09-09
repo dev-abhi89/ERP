@@ -1,20 +1,34 @@
         {% extends 'milk/baseTemplate.html' %}
-        {% block style %} h4{margin:auto;}
+        {% block style %} 
+        .lnk a{
+          color: black;
+         
+          text-shadow: 2px 2px 5px grey;
+          transition: all 0.5s;
+        }
+        .lnk:hover a{
+          color: rgb(48, 48, 168);
+          font-weight: bold;
+          
+        }
+        h4{margin:auto;}
         {% endblock %}
        
-       
+       <style> 
+       </style>
        {% block body %}
-        <h1>Database</h1>
+       <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">User Database</h2></div>
         <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
+                <th scope="col">Username</th>
                 <th scope="col">Number</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Quantity</th>
+                <th scope="col">Address</th>
+                <th scope="col">Whatsaap number</th>
                 <th scope="col">Hubs</th>
-                <th scope="col"> Date</th>
+                
                 
 
                
@@ -23,14 +37,14 @@
             <tbody>
               {% for i in data %}
               <tr>
-                <th scope="row">{{i.id}}</th>
-                <td>{{i.name}}</td>
-                <td>{{i.num}}</td>
-                <td>{{i.amount}}</td>
-                <td>{{i.quantity}}</td>
+                <th scope="row">#</th>
+                <td class="lnk"><a href="/dashboard/user/{{i.id}}"> {{i.name}}</a></td>
+                <td>{{i.user_id.username}}</td>
+                <td>{{i.number}}</td>
+                <td>{{i.address}}</td>
                
-                <td>{{i.hub_id.hub_name}}</td>
-                <td>{{i.date}}</td>
+                <td>{{i.whatsaap_number}}</td>
+                <td>{{i.hub.hub_name}}</td>
 
                 
                 

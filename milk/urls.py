@@ -19,9 +19,9 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-    path('login', views.login, name='login'),
-    path('dashboard/', include('milkdairy.urls')),
+    path('', views.login, name='index'),
+    path('login', views.index, name='login'),
+    path('dashboard/', include('milkdairy.urls'), name='dashboard'),
     path('delivery/', include('delivery.urls')),
     path('hub/', include('hub.urls')),
     path('user/', include('client.urls')),

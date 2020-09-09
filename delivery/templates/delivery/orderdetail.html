@@ -10,50 +10,52 @@
             <tr>
               <th scope="col">0</th>
               <th scope = "col"> Name</th>
-              <td>Abhishek YAdav</td>
+              <td>{{order.user.name}}</td>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="col">1</th>
               <th>Number</th>
-              <td>1234567890</td>
+              <td>{{order.user.number}}</td>
               
             </tr>
             <tr>
               <th scope="col">2</th>
               <th>Amount</th>
-              <td>100</td>
+              <td>{{order.amount}}</td>
               
             </tr>
             <tr>
               <th scope="col">3</th>
-              <th>Quantity</th>
-              <td>2.5</td>
+              <th onclick= "status()">Quantity</th>
+              <td>{{order.quantity}}</td>
               
             </tr>
             <tr>
               <th scope="col">3</th>
               <th>status</th>
-              <td><form action="get"> <select class="custom-select" id="status" required>
-                <option value="1">Delivered</option>
+              <td><form action="" method="POST"> {% csrf_token %} <select name="status" class="custom-select" id="ustatus" required>
+                <option value="{{order.status}}" selected>{{order.status}}</option>
 
-                <option value="2">Undeliverd</option>
-                <option value="2">Out fo delivery</option>
+                <option value="Undeliverd">Undeliverd</option>
+                <option value="deliverd">deliverd</option>
+                <option value="Out fo delivery">Out fo delivery</option>
                 
-            </select> <button class="btn btn-sm mt-2 btn-outline-success" type="submit"> update</button> </form> </td>
+            </select> <input type ="checkbox" name="ucheck" id ="updatecheck">  <button class="btn btn-sm mt-2 btn-outline-success" onclick= "status()" type="submit"> update</button> </form> </td>
               
             </tr>
             <tr>
               <th scope="col">3</th>
               <th>Payment</th>
-              <td><form action="get"> <select class="custom-select" id="status" required>
-                <option value="1">unpaid</option>
+              <td><form action="" method="post"> {% csrf_token %} <select class="custom-select" name="payment" id="pstatus" required>
+                <option value="{{order.payment}}" selected>{{order.payment}}</option>
 
-                <option value="2">Paid</option>
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
                 
                 
-            </select> <button class="btn btn-sm mt-2 btn-outline-success" type="submit"> update</button> </form> </td>
+            </select> <input type ="checkbox" name="pcheck" id ="paymentcheck" >  <button class="btn btn-sm mt-2 btn-outline-success" type="submit"> update</button> </form> </td>
               
             </tr>
           </tbody>
@@ -63,3 +65,16 @@
     </div>
 
 {% endblock %}
+
+
+  <script>
+    function status() {
+    document.getElementById("updatecheck").click();
+    }
+
+    function payment() {
+    document.getElementById("paymentcheck").click();
+    }
+    
+
+  </script>

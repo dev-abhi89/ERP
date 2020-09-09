@@ -1,5 +1,9 @@
 {% extends 'delivery/deliverybasetemplate.html' %}
-
+{% block style %} <style>
+ .ab a{color: black !important ;
+  }
+  
+</style> {% endblock %}
 {% block body %}
 
       <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div>
@@ -10,55 +14,54 @@
                 <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        
                         <th scope="col">Name</th>
                         <th scope="col">Address</th>
                       
                         <th scope="col">Status</th>
+                        <th scope="col">Action</th>
                         
                       </tr>
                     </thead>
                     <tbody>
+                      {% for i in orders %}
                       <tr>
-                        <th scope="row">1</th>
-                        <td><a href="">Abhishek YAdab</a></td>
-                        <td>Behind Main Post Office Tilamharh , madhya pradesh</td>
+                        <td class="ab"><a href="/delivery/orderdetails/{{i.id}}/">{{i.user.name}}</a></td>
+                        <td>{{i.user.address}}</td>
+                        <td>{{i.status}}</td>
+
                        
-                        <td><a href=""> <button class="btn btn-sm btn-outline-success">Update</button></a></td>
-
+                        <td> <button class="btn btn-sm btn-outline-success" type="button" data-toggle="modal" data-target="#{{i.id}}">Update</button> <a href="/delivery/orderdetails/{{i.id}}/"> <button class="btn btn-sm mt-2 btn-outline-success">View</button></a></td>
                       </tr> 
-                      <tr>
-                        <th scope="row">1</th>
-                        <td><a href="">Abhishek YAdab</a></td>
-                        <td>Behind Main Post Office Tilamharh , madhya pradesh</td>
-                        
-                        <td> <button class="btn btn-sm btn-outline-success" type="button" data-toggle="modal" data-target="#update">Update</button> <a href=""> <button class="btn btn-sm mt-2 btn-outline-success">View</button></a></td>
 
-                      </tr> 
+                      <div class="modal fade" id="{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <form action="" method="post"> {% csrf_token %} <input type="text" id="ordr{{i.id}}" name="ordr"> <select name="status" class="custom-select" id="status" required>
+                              <option value="Delivered">Delivered</option>
+                              
+                        <option value="Undeliverd">Undeliverd</option>
+                        <option value="Out fo delivery">Out fo delivery</option>
+                              
+                          </select> 
+                          <script>document.getElementById('ordr{{i.id}}').value = {{i.id}} ;</script>
+        
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
+                            </form>
+                            </div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                     
                      
                     </tbody>
                   </table>
 
 
               </div>
-              <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <form action="get"> <select class="custom-select" id="status" required>
-                      <option value="1">Delivered</option>
-
-                <option value="2">Undeliverd</option>
-                <option value="2">Out fo delivery</option>
-                      
-                  </select> 
-
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </form>
-                    </div>
-                  </div>
-                </div>
+              
               </div>
 
               

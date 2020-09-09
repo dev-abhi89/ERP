@@ -1,241 +1,127 @@
 {% extends 'milk/baseTemplate.html' %}
 {% block style %}
-#memberOption{
-display: none;
+.colm:nth-child(1){
+    background:#fc4c72;
 }
+.colm:nth-child(2){
+    background: #659dbd;
+}
+.colm:nth-child(3){
+    background: #daad86;
+
+}
+.colm:nth-child(4){
+    background: #daad86;}
+.colm{
+    height: 168px;
+}
+h3{
+    color: honeydew;
+    font-family: 'poppins','sans-sarif';
+}
+.colm p{font-size: 1.7em !important;
+color: khaki !important ;}
+.colm:hover{
+    box-shadow: 3px 4px 10px 2px grey;
+    transition: all 0.5s;
+}
+
 
 {% endblock %}
 
 {% block body %}
-<style>
-    .col-2 {
-        max-width: 50px;
-        height: 50px;
-        background-color: red;
-        margin-left: 4px;
-        margin-top: 20px;
-        margin-bottom: 8px;
-        transition: all 0.3s;
-
-    }
-
-    .col-2:hover {
-        transform: translateY(2px);
-        box-shadow: 3px 4px 10px 5px grey;
-    }
-
-    .hide {
-        display: none;
-    }
-
-    .hd {
-        display: none;
-    }
-</style>
-
-<div class="container mx-2">
-    <div class="form">
-        <form method="POSt" action="">
-            {% csrf_token %}
-            <div class="form-group  col-md-8">
-                <label for="name">Fill Name</label>
-                <input type="text" id="name" class="form-control" name="name" placeholder="Enter Name" required>
-            </div>
-            <div class="form-group col-md-8">
-                <label for="number"> Mobile Number: </label>
-                <input type="tel" id="number" class="form-control" name="number" required>
-            </div>
-            <div class="d-flex ml-auto  mr-auto  mt-3 form-row">
-                <div class="col-md-4">
-                    <label for="amount"> Amount:</label>
-                    <input type="number" onchange="amnt()" class="form-control" name="amount" id="amount"
-                        placeholder="Enter amount" required>
-                </div>
-                <div class="col-md-4">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" min="0" step="any" onchange="qunty()" class="form-control" name="quantity"
-                        id="quantity" placeholder="Enter quantity" required>
-
-                </div>
-                <div class="form-group  col-md-8">
-                    <label for="hubs">HUB: </label>
-                    <select class="custom-select" name="hubs" id="hubs" required>
-                        {% for i in hubs %}
-                        <option value="{{i.id}}">{{i.hub_name}}</option>
-                        {% endfor %}
-                    </select>
-
-                </div>
-                <div class="form-group col-md-12">
-                    <div class="custom-control custom-checkbox col-md-4">
-                        <input onchange="membership()" type="checkbox" name="check" class="custom-control-input"
-                            id="member">
-                        <label class="custom-control-label" for="member">Need membershp</label>
-                    </div>
-                </div>
-                <div class="form-row col-md-8 " id="memberOption">
-                    <div class="col-md-6 " id="membership">
-                        <label for="starting">Date of Start</label>
-                        <input type="date" class="form-control" id="starting" name="starting">
-
-                    </div>
-                    <div class="col-md-6" id="membership2">
-                        <label for="endinging">Date of End</label>
-                        <input type="date" class="form-control" id="ending" name="ending">
-
-                    </div>
-                    <div class="form-group  col-md-8">
-                        <label for="hubs">Months </label>
-                        <select class="custom-select" name="months" id="months">
-                            {% for i in months %}
-                            <option value="{{i.id}}">{{i.months}}</option>
-                            {% endfor %}
-                        </select>
-
-                    </div>
-
-                    <div class="container">
-                        <div class="row">
-                            {% for i in days %}
-                            <div class="col-2" value="{{i.id}}" name="{{i.id}}" id="div{{i.id}}">
-                                <p>{{i.date}}</p>
-                                <div class="hde">
-                                    <input type="checkbox" name="days" id="{{i.id}}" value="{{i.id}}">
-                                </div>
-                            </div>
-
-                            {% endfor %}
-
-                        </div>
-                    </div>
-
-                    <div class="custom-control custom-checkbox col-md-4">
-                        <input onchange="mnt()" type="checkbox" name="ncheck" class="custom-control-input" id="nmember">
-                        <label class="custom-control-label" for="nmember">next month</label>
-                    </div>
-                    <div class="container">
-
-
-                        <div class="hd" id="nMntHid">
-                            <div class="form-group  col-md-8 mt-4">
-                                <label for="hubs">Months </label>
-                                <select class="custom-select" name="nxmonths" id="months">
-                                    {% for i in months %}
-                                    <option value="{{i.id}}">{{i.months}}</option>
-                                    {% endfor %}
-                                </select>
-
-                            </div>
-
-                            <div class="container">
-                                <div class="row">
-                                    {% for i in days %}
-                                    <div class="col-2" value="{{i.id}}" name="{{i.id}}" id="div{{i.id}}">
-                                        <p>{{i.date}}</p>
-                                        <div class="hde">
-                                            <input type="checkbox" name="ndays" id="{{i.id}}" value="{{i.id}}">
-                                        </div>
-                                    </div>
-
-                                    {% endfor %}
-
-                                </div>
-
-
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-                    
-                
-                   
-
-
-
-
-
-
-                </div>
-                <div class="col-12 mt-4" style="display: block;">
-                    <button type="submit" class="btn btn-outline-primary">submit</button>
-                </div>
-        </form>
+<!-- <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div> -->
+      <style>
+          .subhead{
+    background: rgb(221, 192, 26);
+    max-height: 32px;
+}
+      </style>
+<div class="container mt-3">
+    <div class="row justify-content-between ">
+            
+        <div class="col-md-3 mt-3 colm"> 
+            <h3>Total Amount</h3>
+            <p>{{tamount}}</p>
+        </div>
+        <div class="col-md-3 mt-3 colm">
+            <h3>Total Users</h3>
+            <p>{{torder}}</p>
+        </div>
+        <div class="col-md-3 mt-3 colm">
+            <h3>Membership</h3>
+            <p>{{tmember}}</p>
+        </div>
     </div>
-</div>
-</div>
-{% endblock %}
-{% block script %}
-<script>
-    function membership() {
-        if (document.getElementById('member').checked) {
-            document.getElementById('memberOption').style.display = "block";
-            document.getElementById('starting').setAttribute('required', true);
-            document.getElementById('ending').setAttribute('required', true);
-        }
-        else {
-            document.getElementById('memberOption').style.display = "none";
-            document.getElementById('starting').removeAttribute('required');
-            document.getElementById('ending').removeAttribute('required');
+  </div>
+
+  <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Users</h2></div>
+
+  <div class="container  ">
+      <div class="row justify-content-around">
+          <div class="col-md-5 d-grid ">
+            <div class="d-flex justify-content-center mt-3 subhead "> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Search User</h2></div>
+            <div class="colm">
+                <form  class="form-group mt-2 pt-5 pl-2 pr-2" action="{% url 'search' %}" method="GET">
+                    
+                    <input class="form-control mb-3" style="box-shadow: 2px 2px 5px 3px grey;" name="search" type="search" placeholder="Search by number" aria-label="Search">
+                    <button class="btn btn-outline-warning mt-3 ml-4 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+           
+
+          </div>
+          <div class="col-md-5">
+            <div class="d-flex justify-content-center mt-3 subhead "> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Create User</h2></div>
+           <a href=""><div class="col-md-12 mt-2 colm">
+                <h3>Create</h3>
+                <p>{{tmember}}</p>
+            </div>
+        </a> 
+
+          </div>
+      </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Top Orders</h2></div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Number</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Hubs</th>
+        <th scope="col"> Date</th>
+        
+
+       
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in data %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.num}}</td>
+        <td>{{i.amount}}</td>
+        <td>{{i.quantity}}</td>
+       
+        <td>{{i.hub_id.hub_name}}</td>
+        <td>{{i.date}}</td>
+
+        
+        
+        
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
 
 
-        }
-    }
 
-    function mnt() {
-        if (document.getElementById('nmember').checked) {
-            document.getElementById('nMntHid').style.display = "block";
-        }
-
-        else {
-            document.getElementById('nMntHid').style.display = "none";
-
-
-        }
-    }
-    // $(document).ready(function(){
-    // $('#sidebarCollapse').on('click',function(){
-    //     $("#sidebar").toggleClass('active');   });
-
-    // });
-    function amnt() {
-        x = document.getElementById('amount').value;
-        document.getElementById('quantity').value = x / 40;
-    }
-    function qunty() {
-
-        x = document.getElementById('quantity').value
-        document.getElementById('amount').value = x * 40
-
-
-    }
-
-    function check() {
-        // x =document.getElementById(this);
-        // console.log(x.style)
-        // xy=x.querySelectorAll(".hide");
-        //document.getElementById(x).click();
-        //$(document).ready(function(){
-        //$(this).find("input").click();
-        //});
-
-        if (document.getElementById(x).checked) {
-            document.getElementById(this).style.backgroundColor = 'green';
-
-
-        }
-        else {
-            pass
-            //document.getElementById('colr').style.backgroundColor='red';
-
-
-        }
-
-
-    }
-    console.log(document.getElementById('chck').value);
-</script>
 
 {% endblock %}

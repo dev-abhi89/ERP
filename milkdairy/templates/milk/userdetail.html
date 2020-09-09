@@ -1,0 +1,174 @@
+{% extends 'milk/baseTemplate.html' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-start mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">User Profile</h2></div>
+
+<table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">0</th>
+        <th scope = "col"> Name</th>
+        <td>{{user.name}}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="col">1</th>
+        <th>Number</th>
+        <td>{{user.number}}</td>
+        
+      </tr>
+      <tr>
+        <th scope="col">0</th>
+        <th scope = "col"> Email</th>
+        <td>{{user.user_id.email}}</td>
+      </tr>
+     
+          <tr>
+            <th scope="col">0</th>
+            <th scope = "col"> User Name</th>
+            <td>{{user.user_id.username}}</td>
+          </tr>
+        
+          <tr>
+            <th scope="col">1</th>
+            <th>Whatsaap number</th>
+            <td>{{user.whatsaap_number}}</td>
+            
+          </tr>
+          <tr>
+            <th scope="col">1</th>
+            <th>Hub</th>
+            <td>{{user.hub.hub_name}}</td>
+            
+          </tr>
+          
+          <tr>
+            <th scope="col">1</th>
+            <th>Address</th>
+            <td>{{user.address}}</td>
+            
+          </tr>
+          </tbody>
+          </table>
+
+          <div class="d-flex justify-content-start mb-3 mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Orders</h2></div>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Month</th>
+                <th scope="col">Day</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Status</th>
+                <th scope="col"> Payment</th>
+                <th scope ="col">Action</th>
+                
+
+               
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in order %}
+              <tr>
+                <th scope="row">{{ count }}</th>
+                <td>{{i.month.months}}</td>
+                <td>{{i.day.date}}</td>
+                <td>{{i.amount}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.status}}</td>
+                <td>{{i.payment}}</td>
+                
+                <td><button class="btn btn-sm btn-outline-success" type="button" data-toggle="modal" data-target="#update">Update</button> <a href=""> <button class="btn btn-sm ml-2 btn-outline-success">View</button></a></td>
+
+                
+                
+                
+              </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+
+          <div class="d-flex justify-content-start mb-3 mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Place Order</h2></div>
+
+
+          <form action="" method="post">
+              {% csrf_token %}
+              <div class="col-md-4">
+                <label for="amount"> Amount:</label>
+                <input type="number" onchange="amnt()" class="form-control" name="amount" id="amount"
+                    placeholder="Enter amount" required>
+            </div>
+            <div class="col-md-4">
+                <label for="quantity">Quantity</label>
+                <input type="number" min="0" step="any" onchange="qunty()" class="form-control" name="quantity"
+                    id="quantity" placeholder="Enter quantity" required>
+
+            </div>
+
+            <div class="form-group  col-md-8">
+                <label for="hubs">Months </label>
+                <select class="custom-select" name="months" id="months">
+                    {% for i in months %}
+                    <option value="{{i.id}}">{{i.months}}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    {% for i in days %}
+                    <div class="col-2" value="{{i.id}}" name="{{i.id}}" id="div{{i.id}}">
+                        <p>{{i.date}}</p>
+                        <div class="hde">
+                            <input type="checkbox" name="days" id="{{i.id}}" value="{{i.id}}">
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+                        <button class="btn btn-primary" type="submit"> Place Order</button>
+          </form>
+
+{% endblock %}
+{% block style %}
+.col-2 {
+    max-width: 50px;
+    height: 50px;
+    background-color: red;
+    margin-left: 4px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    transition: all 0.3s;
+
+}
+
+.col-2:hover {
+    transform: translateY(2px);
+    box-shadow: 3px 4px 10px 5px grey;
+}
+
+{% endblock %}
+
+{% block script %}
+<script> function amnt() {
+    x = document.getElementById('amount').value;
+    document.getElementById('quantity').value = x / 40;
+}
+function qunty() {
+
+    x = document.getElementById('quantity').value
+    document.getElementById('amount').value = x * 40
+
+
+
+}
+</script>
+ {% endblock %}

@@ -55,16 +55,18 @@
   
   <div class="container mt-5">
       <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <table class="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Address</th>
                     <th scope="col">Number</th>
+                    <th scope="col">Address</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Delivery boy</th>
+                    <th scope="col">Payment</th>
+                    <th scope ="col">Delivery boy</th>
+                    <th scope ="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -73,17 +75,44 @@
       <tr>
         <th scope="row">{{i.id}}</th>
         
-        <td>{{i.user_id.order_id.name}}</td>
-        <td>{{i.user_id.order_id.num}}</td>
-        <td>{{i.user_id.order_id.amount}}</td>
-        <td>{{i.user_id.order_id.quantity}}</td>
+        <td>{{i.user.name}}</td>
+        <td>{{i.user.number}}</td>
+        <td>{{i.user.address}}</td>
+        <td>{{i.status}}</td>
        
         
         
         
-        <td>{{i.user_id.order_id.hub_id.hub_name}}</td>
+        <td>{{i.payment}}</td>
+        <td>{{i.delivery.name}}</td>
+        <td><button class="btn btn-outline-success" type="button" data-target ="#{{i.id}}" data-toggle ="modal">Update Delivery Boy</button></td>
 
       </tr>
+
+      <div class="modal fade" id="{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Delivery Boy</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <form action="" method="post">{% csrf_token %} <input type="number" id="ordr" name="ordr"> <select name ="delivery" class="custom-select" id="status" required>
+                {% for m in delivery %}
+                <option value="{{m.id}}">{{m.name}}</option>
+
+                {% endfor %}
+          </select> 
+          <script>document.getElementById('ordr').value = {{i.id}};</script>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+            </div>
+          </div>
+        </div>
       {% endfor %}
                 </tbody>
               </table>

@@ -12,62 +12,92 @@
     
         {% block body %}
                
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                          <th scope="col">phone number</th>
-                          <th scope="col">123456789</th>
-                </tr>
+        <div class="d-flex justify-content-start mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Your details</h2></div>
+
+        <table class="table table-striped mt-3">
+            <thead>
               <tr>
-                <th>Address:</th>
-                <th>collect. rustamji intitude of technology</th>
+                <th scope="col">1</th>
+                <th scope = "col"> Name</th>
+                <td>{{hub.hub_name}}</td>
               </tr>
             </thead>
             <tbody>
-
-                <th>owner Name:</th>
-                <th>Abhishek Yadav</th>
-                <tr>
-                    <th>Watsapp Number:</th>
-                <th>1234567897</th>
-                </tr>
-            </tbody>
-            </table>
+              <tr>
+                <th scope="col">2</th>
+                <th>Number</th>
+                <td>{{hub.number}}</td>
+                
+              </tr>
+              <tr>
+                <th scope="col">3</th>
+                <th scope = "col"> Email</th>
+                <td>{{hub.hub_user.email}}</td>
+              </tr>
+              </tbody>
+              </table>
+        
+              <hr>
+        
+              <div class="d-flex justify-content-start mt-3 bg-danger"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Account Information</h2></div>
+        
+              <table class="table table-striped mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">4</th>
+                    <th scope = "col"> User Name</th>
+                    <td>{{hub.hub_user.username}}</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="col">5</th>
+                    <th>Whatsaap number</th>
+                    <td>{{hub.whatsaap_number}}</td>
+                    
+                  </tr>
+                  <tr>
+                    <th scope="col">6</th>
+                    <th>Hub Address</th>
+                    <td>{{hub.address}}</td>
+                    
+                  </tr>
+        
+                  </tbody>
+                  </table>
             <div class="" id ="data"></div>
             <button type=button data-toggle="collapse" data-target="#tabel" class="btn btn-dark mb-4" aria-expanded="false"
             aria-controls="tabel">Distributors List</button>
 
             <div class="collapse" id="tabel">
-            <table id="" class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Distributer Name </th>
-                        <th scope="col"> Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>Abhishek Yadav</td>
-                    <td>7509112289</td>
-                    </tr>
-                    <tr>
-                        <td>Abhishek Yadav</td>
-                        <td>7509112289</td>
-                        </tr>
-                        <tr>
-                            <td>Abhishek Yadav</td>
-                            <td>7509112289</td>
-                            </tr>
-                            <tr>
-                                <td>Abhishek Yadav</td>
-                                <td>7509112289</td>
-                                </tr>
-                                <tr>
-                                    <td>Abhishek Yadav</td>
-                                    <td>7509112289</td>
-                                    </tr>
-                </tbody>
-            </table>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">username</th>
+                        <th scope="col">Number</th>
+                        <th scope="col">Whatsaap number</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in delivery %}
+                      <tr>
+                        <th scope="row">{{i.name}}</th>
+                        <td>{{i.users.username}}</td>
+                        <td>{{i.number}}</td>
+                       
+                        <td>{{i.whatsaap_number}}</td>
+                     
+        
+                        
+                        
+                        
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
         </div>
 
             

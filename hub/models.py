@@ -36,15 +36,16 @@ from django.contrib.auth.models import  User
 
 
 # Create your models here.
+class Hub_detail(models.Model):
+    id = models.AutoField(primary_key=True)
+    hub_user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-
-class Deliveryboy(models.Model):
-    users = models.OneToOneField(User, on_delete=models.CASCADE)
-    details = models.CharField(max_length=225, blank=True, null=True)
-    name = models.CharField(max_length=225)
+    hub_name = models.CharField(max_length=225)
     number = models.IntegerField( default=00000000)
     address = models.CharField(max_length=400, default='default_address')
     whatsaap_number = models.IntegerField(default = 0000000000)
 
     def __str__(self):
-        return self.name
+        return self.hub_name
+
+

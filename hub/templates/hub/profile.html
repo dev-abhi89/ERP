@@ -1,0 +1,58 @@
+{% extends 'hub/baseTemplate.html' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-start mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Your details</h2></div>
+
+<table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">0</th>
+        <th scope = "col"> Name</th>
+        <td>{{hub.hub_name}}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="col">1</th>
+        <th>Number</th>
+        <td>{{hub.number}}</td>
+        
+      </tr>
+      <tr>
+        <th scope="col">0</th>
+        <th scope = "col"> Email</th>
+        <td>{{hub.hub_user.email}}</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <hr>
+
+      <div class="d-flex justify-content-start mt-3 bg-danger"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Account Information</h2></div>
+
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col">0</th>
+            <th scope = "col"> User Name</th>
+            <td>{{hub.hub_user.username}}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="col">1</th>
+            <th>Whatsaap number</th>
+            <td>{{hub.whatsaap_number}}</td>
+            
+          </tr>
+          <tr>
+            <th scope="col">1</th>
+            <th>Hub Address</th>
+            <td>{{hub.address}}</td>
+            
+          </tr>
+
+          </tbody>
+          </table>
+{% endblock %}

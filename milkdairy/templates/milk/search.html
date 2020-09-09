@@ -1,0 +1,39 @@
+{% extends 'milk/baseTemplate.html' %}
+
+{% block body %}
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Number</th>
+        <th scope="col">Address</th>
+        <th scope="col">whatsaap</th>
+        
+        <th scope="col">action</th>
+
+        
+
+       
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in result %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.number}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.whatsaap_number}}</td>
+        
+        <td><a href="/dashboard/user/{{i.id}}">details</a></td>
+      </tr>
+      {% endfor %}
+     
+     
+
+    </tbody>
+</table>
+
+{% endblock %}

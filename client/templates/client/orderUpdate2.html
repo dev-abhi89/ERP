@@ -4,22 +4,36 @@
 
 <div class="d-flex justify-content-center mt-3 bg-danger"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Update Your order</h2></div>
 <div class="form mt-3">
-    <form action="">
+    <!-- /user/orderupdate -->
+    <form method = "post" action="">
+        {% csrf_token %}
         <div class="form-group  col-md-8">
-            <label for="name">month </label>
-            <input type="text" id ="name" class="form-control" name="month" value="january" placeholder="Enter Name">
+            <label for="months">Month </label>
+            <select class="custom-select" name="month" id="months">
+                <option value= "{{order.month.id}}" selected>{{order.month.months}}</option>
+                {% for i in months %}
+                <option value="{{i.id}}">{{i.months}}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+        <div class="form-group  col-md-8">
+            <label for="days">day </label>
+            <select class="custom-select" name="day" id="days">
+                <option value="{{order.day.id}}" selected>{{order.day.date}}</option>
+                {% for i in days %}
+                <option value="{{i.id}}">{{i.date}}</option>
+                {% endfor %}
+            </select>
+
         </div>
       <div class="form-group  col-md-8">
-            <label for="numbwe">day </label>
-            <input type="tell" id ="number" class="form-control" name="day" value="00" placeholder="Enter Number">
+            <label for="amnt"> Amount </label>
+            <input type="number" onchange="amnt()" id ="amount" class="form-control" name="amount" value="{{order.amount}}" placeholder="Enter amount">
         </div>  
       <div class="form-group  col-md-8">
-            <label for="wnumber"> Amount </label>
-            <input type="number" onchange="amnt()" id ="amount" class="form-control" name="amount" value="00000000" placeholder="Enter Number">
-        </div>  
-      <div class="form-group  col-md-8">
-            <label for="Address"> Quantity </label>
-            <input type="number" id ="quantity" onchange="qunty()" class="form-control" name="quantity" value="" placeholder="Enter Number">
+            <label for="quantity"> Quantity </label>
+            <input type="number"  min="0" step="any" id ="quantity" onchange="qunty()" class="form-control" name="quantity" value="{{order.quantity}}" placeholder="Enter Quantity">
         </div> 
         <button class="btn btn-danger ml-3" type="submit">Submit</button>
         </form> 

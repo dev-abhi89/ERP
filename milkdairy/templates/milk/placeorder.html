@@ -1,0 +1,48 @@
+{% extends 'milk/baseTemplate.html' %}
+{% block style %}
+
+.colm{
+    height: 168px;
+    background:#fc4c72;
+}
+h3{
+    color: honeydew;
+    font-family: 'poppins','sans-sarif';
+}
+.colm p{font-size: 1.7em !important;
+color: khaki !important ;}
+.colm:hover{
+    box-shadow: 3px 4px 10px 2px grey;
+    transition: all 0.5s;
+}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form">
+                <form action="{% url 'milkdairy:search' %}" method="GET">
+
+                    <div class="form-inline">
+                        <input class="form-control mr-sm-2" value="{{request.GET}}" type="search" placeholder="enter Number" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="col-md-12 mt-3 colm"> 
+                <h3>Create new User</h3>
+                <a href="/dashboard/newuser"><button class="btn btn-lg btn-outline-success"> Click Here</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

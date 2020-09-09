@@ -16,11 +16,11 @@
       
         <li class="nav-item dropdown">
           <a class="nav-link dropdown ml-2" href="#" id="monthLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Months
+            Months<strong>({{month}})</strong>
           </a>
           <div class="dropdown-menu" aria-labelledby="monthLink">
               {% for i in months %}
-            <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">{{i.months}}</a>
+            <a class="dropdown-item" href="/dashboard/orders/{{i.id}}">{{i.months}}</a>
             {% endfor %}
           </div>
         </li>
@@ -30,7 +30,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="monthLink">
                 {% for i in days %}
-              <a class="dropdown-item" href="/dashboard/membership/{{month}}/{{i.id}}">{{i.date}}</a>
+              <a class="dropdown-item" href="/dashboard/orders/{{month}}/{{i.id}}">{{i.date}}</a>
               {% endfor %}
             </div>
           </li>
@@ -40,37 +40,43 @@
     </div>
   </nav>
 
-<table class="table table-striped">
+  <table class="table table-striped mt-3">
     <thead>
       <tr>
-        <th scope="col">#</th>
+       
         <th scope="col">Name</th>
         <th scope="col">Number</th>
-        <th scope="col">Amount/day</th>
-        <th scope="col">Quantity/day</th>
-        
+        <th scope="col">Amount /Quantity L</th>
+        <th scope="col">Address</th>
+        <th scope="col">Date</th>
+
 
         <th scope="col">Hub</th>
+        <th scope="col">Status</th>
+        <th scope="col">payment</th>
 
        
       </tr>
     </thead>
     <tbody>
       
-    
-      {% for i in filter %}
+      {% for i in members %}
+      
       <tr>
-        <th scope="row">{{i.id}}</th>
+  
         
-        <td>{{i.user_id.order_id.name}}</td>
-        <td>{{i.user_id.order_id.num}}</td>
-        <td>{{i.user_id.order_id.amount}}</td>
-        <td>{{i.user_id.order_id.quantity}}</td>
+        <td>{{i.user.name}}</td>
+        <td>{{i.user.number}}</td>
+        <td>{{i.amount}} / {{i.quantity}}</td>
+        <td>{{i.user.address}}</td>
+        <td>{{i.month.months}} {{i.day.date}}</td>
        
         
+    
         
-        
-        <td>{{i.user_id.order_id.hub_id.hub_name}}</td>
+        <td>{{i.user.hub.hub_name}}</td>
+        <td>{{i.status}}</td>
+        <td>{{i.payment}}</td>
 
       </tr>
       {% endfor %}

@@ -1,0 +1,24 @@
+{% extends 'milk/baseTemplate.html' %}
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="d-flex justify-content-start mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Create new User</h2></div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ forms|crispy }}
+
+        <div class="form-group">
+            <label for="hubs">Hubs</label>
+            <select name="hubs" id="hubs" class="custom-select">
+                {% for i in hubs %}
+                <option value="{{i.id}}">{{i.hub_name}}</option>
+                {% endfor %}
+            </select>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" type="submit"> submit</button>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'client/baseTemplate.html' %}
+{% block body %}
+
+
+<div class="d-flex justify-content-center mt-3 bg-danger"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Update Your order</h2></div>
+<div class="form mt-3">
+    <!-- /user/orderupdate -->
+    <form method = "post" action="">
+        {% csrf_token %}
+        <div class="form-group  col-md-8">
+            <label for="months">Month </label>
+            <select class="custom-select" name="month" id="months">
+                
+                {% for i in months %}
+                <option value="{{i.id}}">{{i.months}}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+        <div class="form-group  col-md-8">
+            <label for="days">day </label>
+            <select class="custom-select" name="day" id="days">
+                
+                {% for i in days %}
+                <option value="{{i.id}}">{{i.date}}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+      <div class="form-group  col-md-8">
+            <label for="amnt"> Amount </label>
+            <input type="number" onchange="amnt()" id ="amount" class="form-control" name="amount" value="{{order.amount}}" placeholder="Enter amount">
+        </div>  
+      <div class="form-group  col-md-8">
+            <label for="quantity"> Quantity </label>
+            <input type="number"  min="0" step="any" id ="quantity" onchange="qunty()" class="form-control" name="quantity" value="{{order.quantity}}" placeholder="Enter Quantity">
+        </div> 
+        <button class="btn btn-danger ml-3" type="submit" onclick="alert('Your order has been placed')">Place Order</button>
+        </form> 
+
+</div>
+
+{% endblock %}
+
+{% block script %}  
+
+<script>  function amnt() {
+    x = document.getElementById('amount').value;
+    document.getElementById('quantity').value = x / 40;
+}
+function qunty() {
+
+    x = document.getElementById('quantity').value
+    document.getElementById('amount').value = x * 40
+
+
+}
+</script>
+
+{% endblock %}
