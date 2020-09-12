@@ -1,8 +1,9 @@
-{% extends 'delivery/deliverybasetemplate.html' %}
+{% extends 'hub/baseTemplate.html' %}
 
-{% block body %}
+{% block body %}    
 
-<div class="d-flex justify-content-start mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;"> personal Information  </h2></div>
+
+<div class="d-flex justify-content-start mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">User Profile</h2></div>
 
 <table class="table table-striped mt-3">
     <thead>
@@ -24,22 +25,13 @@
         <th scope = "col"> Email</th>
         <td>{{user.users.email}}</td>
       </tr>
-      </tbody>
-      </table>
-
-      <hr>
-
-      <div class="d-flex justify-content-start mt-3 bg-danger"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Account Information</h2></div>
-
-      <table class="table table-striped mt-3">
-        <thead>
+     
           <tr>
             <th scope="col">0</th>
             <th scope = "col"> User Name</th>
             <td>{{user.users.username}}</td>
           </tr>
-        </thead>
-        <tbody>
+        
           <tr>
             <th scope="col">1</th>
             <th>Whatsaap number</th>
@@ -52,13 +44,13 @@
             <td>{{user.hub.hub_name}}</td>
             
           </tr>
+          
           <tr>
             <th scope="col">1</th>
-            <th>Password</th>
-            <td>xxxxxxxx</td>
+            <th>Address</th>
+            <td>{{user.address}}</td>
             
           </tr>
-         
           </tbody>
           </table>
 

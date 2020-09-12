@@ -9,6 +9,7 @@ from datetime import date
 class Month(models.Model):
     id =models.AutoField(primary_key=True)
     months = models.CharField(max_length=20,)
+    m_num = models.CharField( max_length=3,blank=True,null=True)
     year = models.CharField(max_length=5,default='2020')
     def __str__(self):
         return self.months

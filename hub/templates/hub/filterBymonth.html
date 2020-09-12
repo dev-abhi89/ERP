@@ -1,0 +1,94 @@
+{% extends 'hub/baseTemplate.html' %}
+
+
+{% block body %}
+
+
+
+
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-start">
+    <a class="navbar-brand" href="/hub/membership">Orders</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+       
+      
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown ml-2" href="#" id="monthLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            months<strong>({{month}})</strong>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="monthLink">
+              {% for i in months %}
+            <a class="dropdown-item" href="/hub/orders/{{i.id}}">{{i.months}}</a>
+            {% endfor %}
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown ml-2" href="#" id="dayLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Days
+            </a>
+            <div class="dropdown-menu" aria-labelledby="monthLink">
+                {% for i in days %}
+              <a class="dropdown-item" href="/hub/orders/{{month}}/{{i.id}}">{{i.date}}</a>
+              {% endfor %}
+            </div>
+          </li>
+
+        
+      </ul>
+    </div>
+  </nav>
+  <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Users</h2></div>
+
+  <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+         
+          <th scope="col">Name</th>
+          <th scope="col">Number</th>
+          <th scope="col">Amount /Quantity L</th>
+          <th scope="col">Address</th>
+          <th scope="col">Date</th>
+
+          <th scope="col">Hub</th>
+          <th scope="col">Status</th>
+          <th scope="col">payment</th>
+
+         
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for i in members %}
+        
+        <tr>
+    
+          
+          <td>{{i.user.name}}</td>
+          <td>{{i.user.number}}</td>
+          <td>{{i.amount}} / {{i.quantity}}</td>
+          <td>{{i.user.address}}</td>
+          <td>{{i.month.months}} {{i.day.date}}</td>
+         
+          
+      
+          
+          <td>{{i.user.hub.hub_name}}</td>
+          <td>{{i.status}}</td>
+          <td>{{i.payment}}</td>
+
+        </tr>
+        {% endfor %}
+       
+       
+       
+      </tbody>
+  </table>
+{% endblock %}

@@ -2,8 +2,32 @@
 
 {% extends 'client/basetemplate.html' %}
 {% load static %}
+{% block style %}
+<style>
+  .usr{
+    background-image: url("{% static 'milk/3.png' %}"), linear-gradient(0deg,rgb(57, 221, 250) 55%, rgb(8, 192, 192) 50%)  !important;
+    background-size:60vh;
+    background-blend-mode: color-burn;
+     background-position-y: center;
+    
+}
+.para{
+    position: absolute;
+    bottom: 3px;
+    font-size: 60px;
+    font-weight: 1000;
+}
+           .colm{
+    height: 168px;
+    width: 50vh;
+    
+        background-image: linear-gradient(0deg,rgb(57, 221, 250) 55%, rgb(4, 230, 230) 50%);
+   
+}
+</style>
+
+{% endblock %}
 {% block body %}        
-      <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div>
       
       <div class="container mt-5">
           <div class="row">
@@ -41,7 +65,7 @@
                       <tr>
                         <th scope="col">3</th>
                         <th> Full profile</th>
-                        <td><a href=""><button class="btn btn-primary btn-outline-primary">Click Here</button></a> </td>
+                        <td><a href="/user/profile"><button class="btn btn-primary btn-outline-primary">Click Here</button></a> </td>
                         
                       </tr>
                     </tbody>
@@ -58,48 +82,51 @@
       <div class="container">
         <div class="row justify-content-between ">
                 
-            <div class="col-md-3 mt-3 colm"> 
-                <h3>Total Amount</h3>
-                <p>{{tamount}}</p>
+           <a href="/user/neworder"><div class="col-md-12 mt-3 colm usr"> 
+                <h3 class=""> Place order</h3>
+                
+            </div></a> 
+            <a href="/user/orderupdate">
+            <div class="col-md-12 mt-3 colm usr">
+                <h3 class="">Update Orders</h3>
+                
             </div>
-            <div class="col-md-3 mt-3 colm">
-                <h3>Total Users</h3>
-                <p>{{torder}}</p>
+          </a>
+            <a href="/user/orders"><div class="col-md-12 mt-3 colm usr">
+                <h3>View Orders</h3>
+                
             </div>
-            <div class="col-md-3 mt-3 colm">
-                <h3>Membership</h3>
-                <p>{{tmember}}</p>
-            </div>
+          </a>
         </div>
       </div>
 
 
-      <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div>
+      <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Delivery</h2></div>
       
       <div class="container mt-5">
           <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <table class="table table-striped">
                     <thead>
                       <tr>
                         
                         <th scope="col">Amount</th>
-                        <th scope="col">Quantity</th>
+                        
                       
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">quantity</th>
+                        <th scope="col">status</th>
                         
                       </tr>
                     </thead>
                     <tbody>
                       {% for i in order %}
                       <tr>
-                        <td>{{i.amount}}</td>
-                        <td>{{i.quantity}}</td>
+                        <td>{{i.amount}} ₹</td>
+                        <td>{{i.quantity}} L</td>
+                        
                         <td>{{i.status}}</td>
 
                        
-                        <td><a href=""><button class="btn btn-sm btn-outline-success" type="button" >Update</button> </a> <a href="/delivery/orderdetails/{{i.id}}/"> <button class="btn btn-sm mt-2 btn-outline-success">View</button></a></td>
                       </tr> 
                       {% endfor %}
                       </tbody>

@@ -14,9 +14,9 @@ def home(request):
     user = User_data.objects.get(user_id = request.user)
     dat = str(date.today())
     dat.split('-')
-    day = dat[-1:]
-    month = dat[-4:-3]
-    ordr = Ordersummery.objects.filter(user=user, day_id = day, month_id =month)
+    day = dat[-2:]
+    month = dat[-5:-3]
+    ordr = Ordersummery.objects.filter(user=user, day__date = day, month__m_num =month)
     return render(request, 'client/index.html', {'user':user, 'order':ordr})
 @login_required(login_url='/')
 @authentication(allowed='client')
@@ -96,6 +96,13 @@ def orderupdate2(request,id):
         ordr.save()
 
     return render(request, 'client/orderUpdate2.html', {'order':ordr,'months':Month.objects.all,'days':Day.objects.all})
+@login_required(login_url='/')
+@authentication(allowed='client')
+def orderdelete(request,id):
+    user = User_data.objects.get(user_id = request.user)
+    ordr = Ordersummery.objects.get(id= id,user=user)
+    ordr.delete()
+    return redirect('/user/orderupdate')
 @login_required(login_url='/')
 @authentication(allowed='client')
 def trackorder(request):

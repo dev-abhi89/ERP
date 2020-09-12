@@ -2,15 +2,20 @@
 {% block style %} <style>
  .ab a{color: black !important ;
   }
-  
+  .para{
+    position: absolute;
+    bottom: 3px;
+    font-size: 60px;
+    font-weight: 1000;
+}
 </style> {% endblock %}
 {% block body %}
 
-      <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div>
+      <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Delivery</h2></div>
       
       <div class="container mt-5">
           <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <table class="table table-striped">
                     <thead>
                       <tr>
@@ -26,7 +31,7 @@
                     <tbody>
                       {% for i in orders %}
                       <tr>
-                        <td class="ab"><a href="/delivery/orderdetails/{{i.id}}/">{{i.user.name}}</a></td>
+                        <td class="lnk"><a href="/delivery/orderdetails/{{i.id}}/">{{i.user.name}}</a></td>
                         <td>{{i.user.address}}</td>
                         <td>{{i.status}}</td>
 
@@ -63,22 +68,22 @@
               </div>
               
               </div>
-
+            </div>
               
-      <div class="container">
+      <div class="container-fluid">
         <div class="row justify-content-between ">
                 
             <div class="col-md-3 mt-3 colm"> 
-                <h3>Total Amount</h3>
-                <p>{{tamount}}</p>
+                <h3>In transit</h3>
+                <p class="para">{{transit}}</p>
             </div>
             <div class="col-md-3 mt-3 colm">
-                <h3>Total Users</h3>
-                <p>{{torder}}</p>
+                <h3>Out For Delivery</h3>
+                <p class="para">{{out}}</p>
             </div>
             <div class="col-md-3 mt-3 colm">
-                <h3>Membership</h3>
-                <p>{{tmember}}</p>
+                <h3>Delivered</h3>
+                <p class="para">{{delivered}}</p>
             </div>
         </div>
       </div>
@@ -86,8 +91,8 @@
               
 
 
-              </div>
-          </div>
+              
+          
      
 
           {% endblock %}

@@ -3,9 +3,14 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
+<div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Create a Delivery boy</h2></div>
 <form method = "post" class="form-group">
     {% csrf_token %}
-	{{ form|crispy }}
+    {{ form|crispy }}
+    <div class="form-group  col-md-8">
+        <label for="addrs"> Addresss </label>
+        <input type="text"  id ="addrs" class="form-control" name="address"  placeholder="Enter Address">
+    </div>  
 <button type="submit" class="btn btn-primary">submit</button>
 </form>
 

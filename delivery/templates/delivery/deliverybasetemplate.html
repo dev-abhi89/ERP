@@ -108,21 +108,12 @@
      
     </style>
      <style>
-        .colm:nth-child(1){
-       background:#fc4c72;
-   }
-   .colm:nth-child(2){
-       background: #659dbd;
-   }
-   .colm:nth-child(3){
-       background: #daad86;
-
-   }
-   .colm:nth-child(4){
-       background: #daad86;}
-   .colm{
-       height: 168px;
-   }
+       .colm{
+    height: 168px;
+    
+        background-image: linear-gradient(0deg,rgb(57, 221, 250) 55%, rgb(4, 230, 230) 50%);
+   
+}
    h3{
        color: honeydew;
        font-family: 'poppins','sans-sarif';
@@ -133,6 +124,17 @@
        box-shadow: 3px 4px 10px 2px grey;
        transition: all 0.5s;
    }
+   .lnk a{
+    color: black;
+   
+    text-shadow: 2px 2px 5px grey;
+    transition: all 0.5s;
+  }
+  .lnk:hover a{
+    color: rgb(48, 48, 168);
+    font-weight: bold;
+    
+  }
    .cover{
        box-shadow: -1px 1px 10px 3px grey;
        background-image: url("{% static 'client/2.jpg' %}");
@@ -154,7 +156,7 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
-        <a class="navbar-brand" href="/dashboard/membership">Wellcome Abhishek</a>
+        <a class="navbar-brand" href="/delivery/">Wellcome {{user.name}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -167,13 +169,13 @@
           
             <li class="nav-item dropdown">
               <a class="nav-link dropdown ml-2" href="#" id="monthLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Orders<strong>({{month}})</strong>
+                Orders
               </a>
               <div class="dropdown-menu" aria-labelledby="monthLink">
                   
-                <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">Track Order</a>
-                <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">Place Order</a>
-                <a class="dropdown-item" href="/dashboard/membership/{{i.id}}">View View</a>
+                <a class="dropdown-item" href="/delivery/orders/in-transit">in transit</a>
+                <a class="dropdown-item" href="/delivery/orders/out-for-delivery">out for delivery</a>
+                <a class="dropdown-item" href="/delivery/orders/delivered">delivered</a>
                 
               </div>
             </li>
@@ -184,9 +186,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="monthLink">
                   
-                  <a class="dropdown-item" href="/dashboard/membership/{{month}}/{{i.id}}">View Profile</a>
-                  <a class="dropdown-item" href="/dashboard/membership/{{month}}/{{i.id}}">Update Profile</a>
-                  <a class="dropdown-item" href="/dashboard/membership/{{month}}/{{i.id}}">Change Password </a>
+                  <a class="dropdown-item" href="/delivery/profile">View Profile</a>
+                  <a class="dropdown-item" href="/delivery/updateprofile">Update Profile</a>
+                  <a class="dropdown-item" href="#">Change Password </a>
                 
                 </div>
               </li>
@@ -212,35 +214,23 @@
             <ul class="components">
                 <p>Drink Well</p>
                 <li class="active">
-                    <a href="/dashboard">Dashboard</a>
+                    <a href="/delivery/">Dashboard</a>
                    
 
                 </li>
-                <li><a href="">Place Order</a></li>
-                <li><a href="#compo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    Accounts
-                </a>
-                <ul class="collapse components" id ="compo">
-                    <li><a href="/dashboard/database">Your Orders</a></li>
-                    <li><a href="/dashboard/membership">Update Orders</a></li>
-                    <li><a href="/dashboard/membership">Update Password</a></li>
-                    <li><a href="/dashboard/membership">for future options</a></li>
+                
+               
+               
+                    <li><a href="/delivery/orders/in-transit">In transit</a></li>
+                    <li><a href="/delivery/orders/out-for-delivery">Out for delivery</a></li>
+                    <li><a href="/delivery/orders/delivered">delivered</a></li>
+                   
                                     
 
 
-                </ul>
-            </li>
-            <li><a href="/dashboard/membership">Profile </a></li>
-            <li><a href="/dashboard/analytic">Track Your Order </a></li>
-            <li><a href="#another" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                Delivery 
-            </a>
-            <ul class="collapse components" id="another">
-                <li><a href="#"> Delivery Boys</a></li>
-
-                <li><a href="#"> Create Delivery Boy</a></li>
-            </ul>
-        </li>
+            <li><a href="/delivery/profile">Profile </a></li>
+            <li><a href="/delivery/updateprofile">update Profile </a></li>
+         
 
             </ul>
         </nav>
@@ -254,12 +244,7 @@
                     <i class="fas fa-align-left"></i>
                     <span>menu bar</span>
                 </button>
-                <a href="/dashboard/logout">
-                    <button type="button" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>logout</span>
-                    </button>
-                    </a>
+               
             </div>
         </nav>
         <hr>

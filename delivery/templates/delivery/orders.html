@@ -1,0 +1,33 @@
+{% extends 'delivery/deliverybasetemplate.html' %}
+{% block style %}
+<style></style>
+  {% endblock %}
+{% block body %}
+<div class="d-flex justify-content-start mt-3 bg-danger"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Orders ({{slug}})</h2></div>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+      
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in orders %}
+      <tr>
+        <td class="lnk"><a href="/delivery/orderdetails/{{i.id}}/">{{i.user.name}}</a></td>
+        <td>{{i.user.address}}</td>
+        <td>{{i.status}}</td>
+
+       
+        <td>  <a href="/delivery/orderdetails/{{i.id}}/"> <button class="btn btn-sm mt-2 btn-outline-success">View</button></a></td>
+      </tr> 
+      {% endfor %}
+      </tbody>
+      </table>
+
+{% endblock %}

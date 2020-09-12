@@ -10,37 +10,31 @@
         
         <th scope="col">Name</th>
         <th scope="col">Address</th>
+        <th scope="col">Date</th>
       
         <th scope="col">Action</th>
         
       </tr>
     </thead>
     <tbody>
+      {% for i in orders %}
       <tr>
-        <td><a href="">Abhishek YAdab</a></td>
-        <td>Behind Main Post Office Tilamharh , madhya pradesh</td>
-        <td><form action="" method="post">
+        <td>{{i.user.name}}</td>
+        <td>{{i.user.address}}</td>
+        <td>{{i.month.months}} {{i.day.date}}</td>
+        <td><form class="form-inline" action="" method="post">
             {% csrf_token %}
-            <input type="number" style="display:block" value="2"><select class="custom-select" name="delivery" id="delivery">
-                {% for i in delivery %}
-                <option value="{{i.id}}">{{i.name}}</option>
+            <input type="number" name="oid" style="display:none" value="{{i.id}}"><select class="custom-select" name="delivery" id="delivery">
+                {% for m in delivery %}
+                <option value="{{m.id}}">{{m.name}}</option>
                 {% endfor %}
             </select>
-            <button class="btn btn-sm btn-outline">update</button>
+            <button class="btn  mt-1 btn-outline-success">Update</button>
         </form></td>
 
-       
-        <td><a href=""> <button class="btn btn-sm btn-outline-success">Update</button></a></td>
-
       </tr> 
-      <tr>
-        <th scope="row">1</th>
-        <td><a href="">Abhishek YAdab</a></td>
-        <td>Behind Main Post Office Tilamharh , madhya pradesh</td>
-        
-        <td> <button class="btn btn-sm btn-outline-success" type="button" data-toggle="modal" data-target="#update">Update</button> <a href=""> <button class="btn btn-sm mt-2 btn-outline-success">View</button></a></td>
-
-      </tr> 
+      {% endfor %}
+     
      
     </tbody>
   </table>

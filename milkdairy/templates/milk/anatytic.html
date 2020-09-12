@@ -4,10 +4,6 @@
 
 
 
-
-    .colm:nth-child(1){
-        background:#fc4c72;
-    }
     .colm:nth-child(2){
         background: #659dbd;
     }
@@ -31,27 +27,11 @@
         transition: all 0.5s;
     }
     {% endblock %}
+
         {% block body %}
         <div class="cont">
-            <h1>TODAY</h1>
-            <div class="row justify-content-between ">
-                
-                <div class="col-md-3 mt-3 colm"> 
-                    <h3>Total Amount</h3>
-                    <p>{{tamount}}</p>
-                </div>
-                <div class="col-md-3 mt-3 colm">
-                    <h3>Total Users</h3>
-                    <p>{{torder}}</p>
-                </div>
-                <div class="col-md-3 mt-3 colm">
-                    <h3>Membership</h3>
-                    <p>{{tmember}}</p>
-                </div>
-            </div>
-            <hr>
-            <br>
-            <h1>Over all</h1>
+            <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Today's Analysis</h2></div>
+
             <div class="row justify-content-between ">
                 
                 <div class="col-md-3 mt-3 colm"> 
@@ -59,17 +39,50 @@
                     <p>{{amount}}</p>
                 </div>
                 <div class="col-md-3 mt-3 colm">
-                    <h3>Total Users</h3>
-                    <p>{{orders}}</p>
+                    <h3>Total Quantity</h3>
+                    <p>{{quantity}}</p>
                 </div>
                 <div class="col-md-3 mt-3 colm">
-                    <h3>Membership</h3>
-                    <p>{{member}}</p>
+                    <h3>orders</h3>
+                    <p>{{order}}</p>
+                </div>
+            </div>
+            <hr>
+            <br>
+            <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Over all</h2></div>
+
+            <div class="row justify-content-between ">
+                
+                <div class="col-md-3 mt-3 colm"> 
+                    <h3>Total Amount</h3>
+                    <p>{{tamount}}</p>
+                </div>
+                <div class="col-md-3 mt-3 colm">
+                    <h3>Total Qunatity</h3>
+                    <p>{{tquantity}}</p>
+                </div>
+                <div class="col-md-3 mt-3 colm">
+                    <h3>total Orders</h3>
+                    <p>{{torder}}</p>
                 </div>
             </div>
            
         </div>
         
+    <style>
+        .colm:nth-child(1){
+            background-image: linear-gradient(0deg,rgb(57, 221, 250) 55%, rgb(4, 230, 230) 50%);
+        }
+    </style>
+        <style>
+                .col-md-3{
+      width: 80px !important;
+      height: 120px;
+      background-image: linear-gradient(90deg,rgb(21, 21, 185) 50%, blue 50%);
+      z-index: 1000;
+    }
+        </style>
+
           
        
         

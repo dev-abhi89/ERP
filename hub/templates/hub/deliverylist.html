@@ -1,0 +1,34 @@
+{% extends 'hub/baseTemplate.html' %}
+
+{% block body %}
+
+
+<div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Delivery Boys</h2></div>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">username</th>
+        <th scope="col">Number</th>
+        <th scope="col">Whatsaap number</th>
+        <th scope="col">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in list %}
+      <tr>
+        <th scope="row">{{i.name}}</th>
+        <td>{{i.users.username}}</td>
+        <td>{{i.number}}</td>
+       
+        <td>{{i.whatsaap_number}}</td>
+        <td><a href="/hub/delivery-detail/{{i.id}}"><button class="btn btn-outline-success">View</button></a> </td>
+
+     
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+{% endblock %}

@@ -115,34 +115,42 @@
     <div class="wrapper">
         <nav id="sidebar" >
             <div class="sidebar-header">
-                <h1>Milk-dairy</h1>
+                <h1>Hub</h1>
 
             </div>
             <ul class="components">
                 <p>Wellcome to ERP</p>
                 <li class="active">
-                    <a href="/dashboard">Dashboard</a>
+                    <a href="/hub/home">Dashboard</a>
                    
 
                 </li>
-                <li><a href="">Place Order</a></li>
+                <li><a href="/hub/orders">Today's orders</a></li>
                 <li><a href="#compo" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    Accounts
+                    USer
                 </a>
                 <ul class="collapse components" id ="compo">
-                    <li><a href="/dashboard/database">Todays Orders</a></li>
-                    <li><a href="/dashboard/membership">Total memberships</a></li>
+                    <li><a href="/hub/user-data">User Database</a></li>
+                    <li><a href="/hub/newuser">Create USers</a></li>
                 </ul>
             </li>
-            <li><a href="/dashboard/membership"> Delivery Management</a></li>
-            <li><a href="/dashboard/analytic">Analysis </a></li>
+                <li><a href="#delivery" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Delivery management
+                </a>
+                <ul class="collapse components" id ="delivery">
+                    <li><a href="/hub/register">Create Delivery boy</a></li>
+                    <li><a href="/hub/deliverylist">Delivery Boys</a></li>
+                </ul>
+            </li>
+            <li><a href="/hub/un-confirmed"> Unconfirmed</a></li>
+            <!-- <li><a href="/hub/update">update Profile </a></li> -->
             <li><a href="#another" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                Delivery users
+                Profile
             </a>
             <ul class="collapse components" id="another">
-                <li><a href="#"> Delivery Boys</a></li>
+                <li><a href="/hub/profile"> View Profile</a></li>
 
-                <li><a href="#"> Create Delivery Boy</a></li>
+                <li><a href="/hub/profile-update"> Update Profile</a></li>
             </ul>
         </li>
 
@@ -158,6 +166,10 @@
                     <i class="fas fa-align-left"></i>
                     <span>menu bar</span>
                 </button>
+                <form  class="form-inline" action="{% url 'hubsearch' %}" method="GET">
+                    <input class="form-control" name="search" type="search" placeholder="Search by number" aria-label="Search">
+                    <button class="btn btn-outline-success ml-4 my-sm-0" type="submit">Search</button>
+                </form>
                 <a href="/dashboard/logout">
                     <button type="button" class="btn btn-info">
                         <i class="fas fa-align-left"></i>

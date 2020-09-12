@@ -1,4 +1,4 @@
-{% extends 'milk/baseTemplate.html' %}
+{% extends 'hub/baseTemplate.html' %}
 
 {% block body %}
 
@@ -82,7 +82,7 @@
                 <td>{{i.status}}</td>
                 <td>{{i.payment}}</td>
                 
-                <td><a href ="/dashboard/update/{{i.id}}"><button class="btn btn-sm btn-outline-success" type="button" data-toggle="modal" data-target="#update">Update</button></a> <a href="/dashboard/d-order/{{i.id}}/{{user.id}}" onclick="alert('Order has been deleted')"> <button class="btn btn-sm ml-2 btn-outline-danger">delete</button></a></td>
+                <td><a href ="/hub/update/{{i.id}}"><button class="btn btn-sm btn-outline-success" type="button" data-toggle="modal" data-target="#update">Update</button></a> <a href="/hub/d-order/{{i.id}}/{{user.id}}" onclick="alert('Order has been deleted')"> <button class="btn btn-sm ml-2 btn-outline-danger">delete</button></a></td>
 
                 
                 
@@ -139,6 +139,7 @@
 
 {% endblock %}
 {% block style %}
+<style>
 .col-2 {
     max-width: 50px;
     height: 50px;
@@ -154,7 +155,7 @@
     transform: translateY(2px);
     box-shadow: 3px 4px 10px 5px grey;
 }
-
+</style>
 {% endblock %}
 
 {% block script %}

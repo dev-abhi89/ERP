@@ -8,21 +8,34 @@ from datetime import date
 from hub.models import Hub_detail
 from delivery.models import Deliveryboy
 from client.models import User_data
+from django.contrib.auth.decorators import login_required
+from milk.decorators import authentication
 
 
 
 
 # Create your views here.
-
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def dashboard(request):
-    data = {'orders':Ordersummery.objects.all}
-    if request.user.is_authenticated:
+    dat = str(date.today())
+    dat.split('-')
+    day = dat[-2:]
+    month = dat[-5:-3]
+    dataa = Ordersummery.objects.filter(day__date=day, month__m_num=month)
+    amount_qry=dataa.values('amount')
+    litre_qry = dataa.values('quantity')
+    order = dataa.count()
+    amount =sum([amt['amount'] for amt in amount_qry])
+    quantity = sum([ltr['quantity'] for ltr in litre_qry])
+    print(order)
+    data = {'orders':dataa, 'amount':amount,'quantity':quantity, 'order':order }
 
-        return render(request, 'dashboard.html', data)
-    else:
-        return redirect('/')
+    return render(request, 'dashboard.html', data)
 
 
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def newuser(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -48,7 +61,8 @@ def newuser(request):
         form = RegisterForm()
         return render(request, 'milk/newuser.html', {'forms': form,'hubs':Hub_detail.objects.all})
 
-
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def hubregister(request):
     if request.method == 'POST':
         form = HubRegisterForm(request.POST)
@@ -83,13 +97,15 @@ def logout(request):
     messages.info(request, "Logged out successfully!")
     return redirect('/')
 
-
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def search(request):
     input = request.GET.get('search')
     result = User_data.objects.filter(Q(number__icontains = input) | Q(whatsaap_number__icontains=input)).distinct()
     return render(request, 'milk/search.html', {'result': result} )
 
-
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def userdetail(request, id):
     user = User_data.objects.get(id=id)
     orders = Ordersummery.objects.filter(user =user).order_by('month', 'day')
@@ -106,100 +122,80 @@ def userdetail(request, id):
             daydata = Day.objects.get(id = day)
             entry = Ordersummery(user = user,hub = hub, month =month, day = daydata, amount = amount, quantity=quantity)
             entry.save()
-            #print(entry)
-
-
-
 
     return render(request, 'milk/userdetail.html',data )
 
-
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def databse(request):
-    if request.user.is_authenticated:
-        data = User_data.objects.all().order_by('name')
-        dataa={'data':data, }
-        return render(request, 'milk/database.html', dataa)
-    else:
-        return redirect('/')
+    data = User_data.objects.all().order_by('name')
+    dataa={'data':data, }
+    return render(request, 'milk/database.html', dataa)
 
 
 
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def membership(request):
-    if request.user.is_authenticated:
-        dat = str(date.today())
-        dat.split('-')
-        day = dat[-1:]
-        month = dat[-4:-3]
-
-        member = Ordersummery.objects.filter(month=month, day=day).order_by('month', '-day')
-
-
-
-        membr={'mam':member,'months':Month.objects.all, 'days':Day.objects.all}
-        return render(request, 'milk/membership.html',membr)
-    else:
-        return redirect('/')
+    dat = str(date.today())
+    dat.split('-')
+    day = dat[-2:]
+    month = dat[-5:-3]
+    member = Ordersummery.objects.filter(month__m_num=month, day__date=day).order_by('month', '-day')
+    membr={'mam':member,'months':Month.objects.all, 'days':Day.objects.all}
+    return render(request, 'milk/membership.html',membr)
 
 
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def hublist(request):
-    if request.user.is_authenticated:
-        data = {'hubs':Hub_detail.objects.all}
-        return render(request, 'milk/hublist.html',data)
-    else:
-        return redirect('/')
+    data = {'hubs':Hub_detail.objects.all}
+    return render(request, 'milk/hublist.html',data)
+
+
 
 def analytic(request):
-    if request.user.is_authenticated:
-        # data = Orders.objects.all() #analysis code fol alltime data
-        # mem = Members.objects.all()
-        # amt = Orders.objects.values('amount')
-        # amnt = {at['amount'] for at in amt }
-        # amont =sum(amnt)
-        # total = len(data) #here i use len but better understanding you can also use .count method for precise code
-        # member = len(mem)
-        # dat = str(date.today())
-        #
-        #
-        #
-        #
-        #
-        # today_data = Orders.objects.filter(date=dat)
-        # ids = today_data.values('id')#getiing ids of orders
-        # t_id = [i['id'] for i in ids]#making list
-        # today_mem =[today_data.filter(members__order_id = i) for i in t_id]#grabbing members using user's table date
-        # tusers_len = len(today_data) #length of todays users (you can also use .count() query instead len
-        # tmm_len = len(today_mem) # todays members length
-        # am_data=today_data.values('amount')
-        # tamnt = {amt['amount'] for amt in am_data}
-        # sum_tamnt = sum(tamnt) # sum of total amount
-        #
-        #
-        #
-        # params = {'orders': total,'amount': amont, 'member':member,'torder':tusers_len, 'tmember':tmm_len,'tamount':sum_tamnt}
+    dat = str(date.today())
+    dat.split('-')
+    day = dat[-2:]
+    month = dat[-5:-3]
+#todays'data
+    dataa = Ordersummery.objects.filter(day__date=day, month__m_num=month)
+    amount_qry=dataa.values('amount')
+    litre_qry = dataa.values('quantity')
+    order = dataa.count()
+    amount =sum([amt['amount'] for amt in amount_qry])
+    quantity = sum([ltr['quantity'] for ltr in litre_qry])
+    Tdataa=Ordersummery.objects.all()
+    Tamount_qry=Tdataa.values('amount')
+    Tlitre_qry = Tdataa.values('quantity')
+    Torder = Tdataa.count()
+    Tamount =sum([amt['amount'] for amt in Tamount_qry])
+    Tquantity = sum([ltr['quantity'] for ltr in Tlitre_qry])
 
-        return render(request, 'milk/anatytic.html')
-    else:
-        return redirect('/')
+    data = { 'order':order,'amount':amount,'quantity':quantity , 'torder':Torder, 'tamount':Tamount,'tquantity':Tquantity}
+
+    return render(request, 'milk/anatytic.html',data)
+
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def hubdetails(request, id):
-    if request.user.is_authenticated:
-        hub = Hub_detail.objects.get(id = id)
-        dell = Deliveryboy.objects.filter(hub = hub)
-        params = {'hub':hub, 'delivery':dell}
-        return render(request, 'milk/hubdetails.html',params)
-    else:
-        return redirect('/')
+    hub = Hub_detail.objects.get(id = id)
+    dell = Deliveryboy.objects.filter(hub = hub)
+    params = {'hub':hub, 'delivery':dell}
+    return render(request, 'milk/hubdetails.html',params)
 
-
-
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def filterMonth(request, month):
     filter = Ordersummery.objects.filter(month= month).order_by('month', '-day')
     months = Month.objects.all()
     day = Day.objects.all()
     params={'members':filter,'days':day, 'months':months,'month':month}
-
     return render(request,'milk/filterBymonth.html', params)
 
-
+@login_required(login_url='/')
+@authentication(allowed='admin')
 def filterDay(request, month,day):
      filter = Ordersummery.objects.filter(month = month,day=day).order_by('-day')
      months = Month.objects.all()
@@ -207,6 +203,32 @@ def filterDay(request, month,day):
      params = {'months':months, 'day':day, 'days':days,'members':filter,'month':month}
      return render(request, 'milk/filterByDay.html', params)
 
+
+@login_required(login_url='/')
+@authentication(allowed='admin')
+def orderupdate(request,id):
+    ordr = Ordersummery.objects.get(id= id)
+    if request.method == 'POST':
+        amnt = request.POST.get('amount')
+        quantity = request.POST.get('quantity')
+        month_id = request.POST.get('month')
+        month = Month.objects.get(id=month_id)
+        day_id = request.POST.get('day')
+        day = Day.objects.get(id=day_id)
+        ordr.month =month
+        ordr.day =day
+        ordr.amount = amnt
+        ordr.quantity = quantity
+        ordr.save()
+
+    return render(request, 'client/orderUpdate2.html', {'order':ordr,'months':Month.objects.all,'days':Day.objects.all})
+
+@login_required(login_url='/')
+@authentication(allowed='admin')
+def orderdelete(request,id,uid):
+    ordr = Ordersummery.objects.get(id= id)
+    ordr.delete()
+    return redirect('/dashboard/user/'+str(uid))
 
 
 

@@ -28,6 +28,8 @@ def auth(view_func):
                     return redirect('/delivery/')
                 if group == 'client':
                     return redirect('/user/')
+                if group == 'admin':
+                    return redirect('/dashboard/')
                 else:
                     return redirect('/dashboard/logout')
         else:

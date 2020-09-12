@@ -1,19 +1,11 @@
 {% extends 'milk/baseTemplate.html' %}
 {% block style %}
-.colm:nth-child(1){
-    background:#fc4c72;
-}
-.colm:nth-child(2){
-    background: #659dbd;
-}
-.colm:nth-child(3){
-    background: #daad86;
 
-}
-.colm:nth-child(4){
-    background: #daad86;}
 .colm{
     height: 168px;
+    
+        background-image: linear-gradient(0deg,rgb(57, 221, 250) 55%, rgb(4, 230, 230) 50%);
+   
 }
 h3{
     color: honeydew;
@@ -25,32 +17,64 @@ color: khaki !important ;}
     box-shadow: 3px 4px 10px 2px grey;
     transition: all 0.5s;
 }
-
+.lnk a{
+    color: black;
+   
+    text-shadow: 2px 2px 5px grey;
+    transition: all 0.5s;
+  }
+  .lnk:hover a{
+    color: rgb(48, 48, 168);
+    font-weight: bold;
+    
+  }
 
 {% endblock %}
 
 {% block body %}
+
 <!-- <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Todays Dalivery</h2></div> -->
       <style>
           .subhead{
     background: rgb(221, 192, 26);
     max-height: 32px;
+    
+}
+.colm{
+    height: 168px;
+        position: relative;
+        background-image: linear-gradient(0deg,rgb(57, 221, 250) 55%, rgb(8, 192, 192) 50%);
+   
+}
+.para{
+    position: absolute;
+    bottom: 3px;
+    font-size: 60px;
+    font-weight: 1000;
+}
+{% load static %}
+.usr{
+    background-image: url("{% static 'milk/3.png' %}"), linear-gradient(0deg,rgb(57, 221, 250) 55%, rgb(8, 192, 192) 50%)  !important;
+    background-size:60vh;
+    background-blend-mode: color-burn;
+     background-position-y: center;
+    
 }
       </style>
 <div class="container mt-3">
     <div class="row justify-content-between ">
             
         <div class="col-md-3 mt-3 colm"> 
-            <h3>Total Amount</h3>
-            <p>{{tamount}}</p>
+            <h3>Orders</h3>
+            <p class="para">{{order}}</p>
+        </div>
+        <div class="col-md-3 mt-3 colm ">
+            <h3>Amount</h3>
+            <p class="para">{{amount}}</p>
         </div>
         <div class="col-md-3 mt-3 colm">
-            <h3>Total Users</h3>
-            <p>{{torder}}</p>
-        </div>
-        <div class="col-md-3 mt-3 colm">
-            <h3>Membership</h3>
-            <p>{{tmember}}</p>
+            <h3>quantity</h3>
+            <p class="para">{{quantity}}</p>
         </div>
     </div>
   </div>
@@ -65,7 +89,7 @@ color: khaki !important ;}
                 <form  class="form-group mt-2 pt-5 pl-2 pr-2" action="{% url 'search' %}" method="GET">
                     
                     <input class="form-control mb-3" style="box-shadow: 2px 2px 5px 3px grey;" name="search" type="search" placeholder="Search by number" aria-label="Search">
-                    <button class="btn btn-outline-warning mt-3 ml-4 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-warning mt-3 ml-4 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
            
@@ -73,9 +97,9 @@ color: khaki !important ;}
           </div>
           <div class="col-md-5">
             <div class="d-flex justify-content-center mt-3 subhead "> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Create User</h2></div>
-           <a href=""><div class="col-md-12 mt-2 colm">
-                <h3>Create</h3>
-                <p>{{tmember}}</p>
+           <a href="/dashboard/newuser"><div class="col-md-12 mt-2 colm usr">
+                
+                
             </div>
         </a> 
 
@@ -83,33 +107,33 @@ color: khaki !important ;}
       </div>
   </div>
 
-  <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Top Orders</h2></div>
+  <div class="d-flex justify-content-center mt-3 bg-warning"> <h2 style="font-family: 'Times New Roman', Times, serif; color: seashell;">Today's Orders</h2></div>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        
         <th scope="col">Name</th>
         <th scope="col">Number</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Quantity</th>
+        <th scope="col">Amount/Quantity</th>
+        <th scope="col">whatsaap number</th>
         <th scope="col">Hubs</th>
-        <th scope="col"> Date</th>
+        <th scope="col"> Date of Placement</th>
         
 
        
       </tr>
     </thead>
     <tbody>
-      {% for i in data %}
+      {% for i in orders %}
       <tr>
-        <th scope="row">{{i.id}}</th>
-        <td>{{i.name}}</td>
-        <td>{{i.num}}</td>
-        <td>{{i.amount}}</td>
-        <td>{{i.quantity}}</td>
+        
+        <td class="lnk"><a href="/dashboard/user/{{i.user.id}}">{{i.user.name}} </a></td>
+        <td>{{i.user.number}}</td>
+        <td>{{i.amount}} ₹/{{i.quantity}} L</td>
+        <td>{{i.user.whatsaap_number}}</td>
        
-        <td>{{i.hub_id.hub_name}}</td>
+        <td>{{i.user.hub.hub_name}}</td>
         <td>{{i.date}}</td>
 
         

@@ -8,7 +8,8 @@ urlpatterns = [
     path('neworder',views.placeorder, name='placeorder'),
     path('orderupdate', views.orderupdate, name='orderupdate'),
     path('orderupdate/<int:id>', views.orderupdate2, name='orderupdate2'),
-    path('trackorder', views.trackorder, name='trackorder')
+    path('trackorder', views.trackorder, name='trackorder'),
+    path('d-order/<int:id>', views.orderdelete, name="deleteorder" ),
 
 
 

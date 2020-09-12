@@ -25,6 +25,7 @@ urlpatterns = [
     path('analytic', views.analytic, name='analytics'),
     path('hubdetail/<int:id>', views.hubdetails, name='hubDetails'),
     path('hublist', views.hublist, name='hubList'),
+    path('update/<int:id>', views.orderupdate, name='orderupdate'),
     path('orders', views.membership, name='memberShip'),
     path('orders/<int:month>',views.filterMonth, name="filterByMonth"),
     path('orders/<int:month>/<int:day>', views.filterDay, name = 'filterByDay'),
@@ -32,5 +33,6 @@ urlpatterns = [
     path('newhub', views.hubregister, name = 'newhub'),
     path(r'^search/$', views.search, name='search'),
     path('user/<int:id>/', views.userdetail, name='userDetail'),
+    path('d-order/<int:id>/<int:uid>', views.orderdelete, name="deleteorder"),
 
 ]
