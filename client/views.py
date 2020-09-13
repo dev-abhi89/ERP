@@ -56,7 +56,7 @@ def order(request):
 @authentication(allowed='client')
 def orderupdate(request):
     user = User_data.objects.get(user_id = request.user)
-    ordr = Ordersummery.objects.filter(user=user,status='undelivered').order_by('month','-day')
+    ordr = Ordersummery.objects.filter(user=user,status='in transit').order_by('month','-day')
 
     return render(request, 'client/orderUpdate.html',{'orders':ordr})
 @login_required(login_url='/')

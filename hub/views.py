@@ -1,5 +1,4 @@
 from django.shortcuts import render ,redirect , HttpResponse
-from django.contrib.auth import authenticate
 from .models import Hub_detail
 from milk.decorators import authentication
 from django.contrib.auth.decorators import login_required
@@ -89,7 +88,7 @@ def index(request):
     print(user)
 
     data = Ordersummery.objects.filter(hub=user, day__date = day, month__m_num =month)
-    dlvrd = data.filter(status='deliverd').count()
+    dlvrd = data.filter(status='delivered').count()
     uncnfrmd = data.filter(delivery=None).count()
     trnsit = data.filter(status='out for delivery').count()
     print(trnsit)

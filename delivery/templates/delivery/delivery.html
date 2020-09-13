@@ -43,10 +43,10 @@
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <form action="" method="post"> {% csrf_token %} <input type="text" id="ordr{{i.id}}" name="ordr"> <select name="status" class="custom-select" id="status" required>
-                              <option value="Delivered">Delivered</option>
+                              <option value="delivered">Delivered</option>
                               
-                        <option value="Undeliverd">Undeliverd</option>
-                        <option value="Out fo delivery">Out fo delivery</option>
+                        <option value="in transit">in transit</option>
+                        <option value="out for delivery">Out for delivery</option>
                               
                           </select> 
                           <script>document.getElementById('ordr{{i.id}}').value = {{i.id}} ;</script>

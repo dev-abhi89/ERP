@@ -17,8 +17,8 @@ def delivery(request):
         day = dat[-2:]
         month = dat[-5:-3]
         data = Ordersummery.objects.filter(delivery=user,day__date = day, month__m_num =month)
-        trnst = Ordersummery.objects.filter(status='undeliverd',day__date = day, month__m_num =month).count()
-        dlvrd = Ordersummery.objects.filter(status='deliverd',day__date = day, month__m_num =month).count()
+        trnst = Ordersummery.objects.filter(status='in transit',day__date = day, month__m_num =month).count()
+        dlvrd = Ordersummery.objects.filter(status='delivered',day__date = day, month__m_num =month).count()
         ofd = Ordersummery.objects.filter(status='out for delivery',day__date = day, month__m_num =month).count()
         if request.method == 'POST':
             ordr = request.POST.get('ordr')
@@ -81,7 +81,7 @@ def orders(request,slug):
     day = dat[-2:]
     month = dat[-5:-3]
     if slug == 'in-transit':
-        data = Ordersummery.objects.filter(month__m_num =month, day__date=day,status='undelivered')
+        data = Ordersummery.objects.filter(month__m_num =month, day__date=day,status='in transit')
     elif slug == 'out-for-delivery':
         data = Ordersummery.objects.filter(month__m_num =month, day__date=day,status='out for delivery')
     elif slug == 'delivered':

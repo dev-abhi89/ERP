@@ -38,9 +38,9 @@
               <td><form action="" method="POST"> {% csrf_token %} <select name="status" class="custom-select" id="ustatus" required>
                 <option value="{{order.status}}" selected>{{order.status}}</option>
 
-                <option value="Undeliverd">Undeliverd</option>
-                <option value="deliverd">deliverd</option>
-                <option value="Out fo delivery">Out fo delivery</option>
+                <option value="in transit">in transit</option>
+                <option value="delivered">delivered</option>
+                <option value="out fo delivery">Out fo delivery</option>
                 
             </select> <input type ="checkbox" name="ucheck" id ="updatecheck">  <button class="btn btn-sm mt-2 btn-outline-success" onclick= "status()" type="submit"> update</button> </form> </td>
               

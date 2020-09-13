@@ -36,7 +36,7 @@ class Ordersummery(models.Model):
     day = models.ForeignKey(Day, on_delete=models.CASCADE)
     amount = models.IntegerField()
     quantity = models.DecimalField(max_digits=99999,decimal_places=2)
-    status = models.CharField(max_length=20, default='undelivered')
+    status = models.CharField(max_length=20, default='in transit')
     payment = models.CharField(max_length=20, default='unpaid')
     date= models.DateTimeField(auto_now_add=True)
     hub = models.ForeignKey('hub.Hub_detail',null=True, on_delete=models.SET_NULL)
