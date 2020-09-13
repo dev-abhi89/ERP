@@ -11,20 +11,7 @@ def index(request):
 @uauth
 def login(request):
     group = None
-    # if request.user.is_authenticated:
-    #     print('yes')
-    #     if request.user.groups.exists():
-    #                 group = request.user.groups.all()[0].name
-    #                 if group == 'hub':
-    #                     return redirect('/hub/home')
-    #                 if group == 'delivery':
-    #                     return redirect('/delivery/')
-    #                 if group == 'client':
-    #                     return redirect('/user/')
-    #     return HttpResponse('unable to find group')
-    #
-    # else:
-    #     print('no')
+
     if request.method =='POST':
         uame = request.POST['uname']
         pname = request.POST['pas']
@@ -34,15 +21,15 @@ def login(request):
             auth.login(request, user)
 
             if request.user.groups.exists():
-                print('true1')
                 group = request.user.groups.all()[0].name
-                print(group)
                 if group == 'Hub':
                     return redirect('/hub/home')
                 if group == 'delivery':
                     return redirect('/delivery/')
                 if group == 'client':
                     return redirect('/user/')
+                if group == 'admin':
+                    return redirect('/dashboard/')
             return HttpResponse('unable to find group')
         else:
             print('wrong')
